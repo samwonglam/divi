@@ -1,0 +1,2818 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>香海正覺蓮社佛教正慧小學｜三年級數學科課業：除法(3.2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --main:#1f7a8c;
+  --main-dark:#145361;
+  --warm:#f4a261;
+  --warm-dark:#d97724;
+  --red:#e76f51;
+  --red-dark:#b84a2e;
+  --green:#2a9d8f;
+  --green-dark:#1d7066;
+  --dark:#1e293b;
+  --muted:#64748b;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Noto Sans TC',"PingFang HK","Microsoft JhengHei",sans-serif;
+  color:var(--dark);
+  min-height:100vh;
+  overflow-x:hidden;
+  user-select:none;-webkit-user-select:none;
+  background:linear-gradient(135deg,#f8fafc 0%,#eef6ff 35%,#fef9ef 70%,#f0fdf4 100%);
+}
+.hidden{display:none!important}
+button{
+  font-family:inherit;cursor:pointer;border:none;border-radius:12px;
+  font-size:15px;font-weight:900;padding:8px 15px;min-height:42px;
+  transition:transform .12s,box-shadow .12s,filter .12s;
+}
+.btn{
+  background:linear-gradient(180deg,#2b95a8,var(--main));color:#fff;
+  box-shadow:0 4px 0 var(--main-dark),0 6px 12px rgba(20,83,97,.18);
+}
+.btn.warm{
+  background:linear-gradient(180deg,#f7b277,var(--warm));color:#fff;
+  box-shadow:0 4px 0 var(--warm-dark),0 6px 12px rgba(217,119,36,.2);
+}
+.btn.red{
+  background:linear-gradient(180deg,#f0856b,var(--red));color:#fff;
+  box-shadow:0 4px 0 var(--red-dark),0 6px 12px rgba(184,74,46,.22);
+}
+.btn.green{
+  background:linear-gradient(180deg,#3ab5a6,var(--green));color:#fff;
+  box-shadow:0 4px 0 var(--green-dark),0 6px 12px rgba(29,112,102,.2);
+}
+.btn.gray{
+  background:linear-gradient(180deg,#f1f5f9,#cbd5e1);color:#334155;
+  box-shadow:0 4px 0 #94a3b8,0 5px 10px rgba(15,23,42,.1);
+}
+.btn:hover:not(:disabled){filter:brightness(1.04)}
+.btn:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.btn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none}
+.btn.on{outline:3px solid #facc15;box-shadow:0 0 0 5px rgba(250,204,21,.35)}
+.pulse{animation:pulseBtn 1.3s infinite}
+@keyframes pulseBtn{
+  50%{transform:scale(1.04);box-shadow:0 4px 0 var(--red-dark),0 0 20px rgba(231,111,81,.6)}
+}
+
+/* ===== 仿真 3D 立體物件 ===== */
+.o{
+  display:inline-flex;width:var(--s,40px);height:var(--s,40px);flex:0 0 auto;
+  touch-action:none;user-select:none;-webkit-user-select:none;
+  filter:drop-shadow(0 4px 3px rgba(0,0,0,.26));
+  transition:transform .2s cubic-bezier(.22,1,.36,1),filter .2s;
+}
+.o svg{width:100%;height:100%;pointer-events:none;overflow:visible}
+.item{cursor:grab}
+.item:hover{transform:translateY(-6px) rotate(-8deg) scale(1.14);filter:drop-shadow(0 8px 5px rgba(0,0,0,.3))}
+.item.coin-sel{
+  transform:translateY(-7px) scale(1.15);
+  filter:drop-shadow(0 0 8px #e11d48) drop-shadow(0 5px 4px rgba(0,0,0,.25));
+  outline:3px solid #e11d48;border-radius:50%;background:#fff0f3;
+  position:relative;
+}
+.coin-badge-float{
+  position:absolute;top:-16px;left:50%;transform:translateX(-50%);
+  background:#e11d48;color:#fff;font-size:10px;font-weight:900;
+  padding:1px 5px;border-radius:6px;white-space:nowrap;pointer-events:none;
+  box-shadow:0 2px 4px rgba(0,0,0,.2);z-index:5;
+}
+/* 雙向視覺連動高亮（商 / 乘積 / 餘數） */
+.hl-quotient .target.full, .hl-quotient .pen-card, .hl-quotient .target.kid, .hl-quotient .target.pingpong-basket-card{
+  outline:4px solid #f59e0b!important;
+  box-shadow:0 0 0 6px rgba(245,158,11,.35),0 10px 20px rgba(0,0,0,.18)!important;
+  animation:pulseHighlight .9s infinite alternate;
+}
+.hl-product .target .o, .hl-product .coin-bundle{
+  filter:drop-shadow(0 0 8px #10b981) drop-shadow(0 3px 2px rgba(0,0,0,.3))!important;
+  transform:scale(1.12);
+}
+.hl-remainder #leftover, .hl-remainder .target.bonus{
+  outline:4px solid #e11d48!important;
+  box-shadow:0 0 0 6px rgba(225,29,72,.35)!important;
+  animation:pulseHighlight .8s infinite alternate;
+}
+@keyframes pulseHighlight{
+  from{transform:scale(1)}
+  to{transform:scale(1.03)}
+}
+.link-banner{
+  margin-top:6px;padding:6px 12px;border-radius:10px;
+  background:#fef3c7;border:2px solid #f59e0b;color:#92400e;
+  font-size:14px;font-weight:900;text-align:center;
+  animation:pop3d .3s both;
+}
+.rem-err-banner{
+  margin-top:8px;padding:10px 12px;border-radius:12px;
+  background:#fff1f2;border:2.5px solid #e11d48;color:#9f1239;
+  font-size:14.5px;font-weight:900;line-height:1.5;
+  animation:shake .4s;
+}
+.quick-fill-btn{
+  margin-top:5px;padding:3px 9px!important;min-height:26px!important;
+  font-size:11.5px!important;border-radius:8px!important;
+  background:linear-gradient(180deg,#38bdf8,#0284c7)!important;color:#fff!important;
+  box-shadow:0 2px 0 #0369a1!important;
+}
+.ghosted{opacity:.25}
+.pop{animation:pop3d .55s cubic-bezier(.28,1.5,.5,1) both}
+@keyframes pop3d{
+  from{transform:perspective(420px) translateZ(140px) rotateY(180deg) scale(.2)}
+  to{transform:none}
+}
+.ghost{opacity:.32;filter:grayscale(.4)}
+
+/* ===== 十位立體包裝 ===== */
+.pack{
+  display:inline-flex;flex-direction:column;align-items:center;cursor:pointer;
+  padding:8px 10px 5px;border-radius:14px;background:rgba(255,255,255,.78);
+  border:2px solid #cbd5e1;transition:transform .22s,box-shadow .22s;
+}
+.pack:hover{
+  transform:perspective(600px) rotateX(12deg) translateY(-5px) scale(1.04);
+  box-shadow:0 10px 18px rgba(0,0,0,.12);border-color:var(--main);
+}
+.tube{
+  position:relative;display:flex;align-items:center;padding:5px 10px;
+  border-radius:20px;border:2px solid #ffffffdd;
+  transform:perspective(560px) rotateX(18deg);
+  box-shadow:inset 0 -5px 8px rgba(0,0,0,.15),0 7px 12px rgba(0,0,0,.18);
+}
+.tube::after{
+  content:'';position:absolute;left:8px;right:8px;top:3px;height:30%;
+  border-radius:18px;background:linear-gradient(#ffffffcc,#fff0);pointer-events:none;
+}
+.tube .o{margin:0 -3px;filter:drop-shadow(0 2px 1px rgba(0,0,0,.28))}
+.tube.bag{background:linear-gradient(180deg,#fff0f6,#ffc9de);border-color:#ffdeeb}
+.tube.tube{background:linear-gradient(180deg,#e7f5ff,#a5d8ff);border-color:#d0ebff}
+.pack small{font-weight:900;margin-top:5px;font-size:12.5px;color:#1e293b}
+.pack b{font-size:12px;color:var(--red);margin-top:1px}
+.newPack{animation:packIn .65s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes packIn{
+  from{transform:perspective(500px) translateZ(180px) rotateX(80deg) scale(.3)}
+  to{transform:none}
+}
+
+/* ===== 題 2：5元圈一圈紅圈與藍紅原子筆展示架 ===== */
+.coin-bundle{
+  position:relative;display:inline-flex;align-items:center;gap:2px;
+  padding:6px 10px 15px;margin:4px;border-radius:24px;
+  border:3px solid #e11d48;
+  background:radial-gradient(circle at 50% 40%,#fff5f7,#ffe4e6);
+  box-shadow:0 5px 0 #fda4af,0 8px 14px rgba(225,29,72,.16);
+  animation:pop3d .5s cubic-bezier(.3,1.5,.5,1) both;
+}
+.coin-bundle-tag{
+  position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
+  background:#e11d48;color:#fff;font-size:11.5px;font-weight:900;
+  padding:1px 9px;border-radius:10px;white-space:nowrap;
+}
+.pen-card{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  background:linear-gradient(180deg,#ffffff,#eff6ff);
+  border:2.5px solid #60a5fa;border-radius:16px;padding:10px 12px 8px;
+  min-width:86px;
+  transform:perspective(700px) rotateX(8deg);
+  box-shadow:0 7px 0 #93c5fd,0 12px 18px rgba(30,64,175,.14);
+}
+.pen-card .pen-price{
+  margin-top:4px;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:900;
+  padding:1px 8px;border-radius:8px;
+}
+
+/* ===== 登入畫面 ===== */
+#login{
+  max-width:760px;margin:28px auto;background:#ffffff;
+  border-radius:22px;padding:26px 24px;
+  border:2.5px solid #bae6fd;
+  box-shadow:0 18px 40px rgba(15,23,42,.1);text-align:center;
+}
+.hero-showcase{
+  display:flex;justify-content:center;gap:14px;height:68px;align-items:center;margin-bottom:8px;
+}
+.hero-showcase .o{animation:heroFloat 3.6s ease-in-out infinite}
+@keyframes heroFloat{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-8px) rotate(6deg)}
+}
+.pick{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0 16px}
+.pick button{
+  background:#f8fafc;color:var(--dark);min-width:54px;border:2px solid #cbd5e1;
+  box-shadow:0 3px 0 #cbd5e1;
+}
+.pick button.on{
+  background:linear-gradient(180deg,#2b95a8,var(--main));color:#fff;
+  border-color:var(--main-dark);box-shadow:0 4px 0 var(--main-dark);
+  transform:translateY(-2px) scale(1.05);
+}
+
+/* ===== 頂部書眉與導航 ===== */
+header.top{
+  position:sticky;top:0;z-index:30;
+  background:linear-gradient(90deg,#1b4965,#1f7a8c,#2a9d8f);
+  color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;
+  gap:10px;box-shadow:0 4px 16px rgba(0,0,0,.15);
+}
+header .title{font-weight:900;font-size:17.5px;flex:1;min-width:220px}
+header .title small{display:block;font-weight:700;font-size:12px;opacity:.9}
+.chip{
+  background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);
+  border-radius:18px;padding:5px 12px;font-weight:900;font-size:13.5px;
+}
+.tabs{
+  max-width:1200px;margin:12px auto 0;padding:0 14px;
+  display:flex;gap:8px;overflow-x:auto;
+}
+.tab{
+  background:#fff;color:var(--dark);border:2px solid #cbd5e1;
+  box-shadow:0 4px 0 #cbd5e1;white-space:nowrap;display:flex;align-items:center;gap:6px;
+}
+.tab .o{--s:24px}
+.tab.on{
+  background:#e0f2fe;border-color:var(--main);color:var(--main-dark);
+  box-shadow:0 4px 0 var(--main);transform:translateY(-2px);
+}
+.tab.done{border-color:var(--green);background:#f0fdf4;color:var(--green-dark)}
+.tab.challenge-tab{border-color:var(--warm-dark);background:#fffbeb;color:#9a3412}
+.tab.challenge-tab.on{background:var(--warm);color:#fff;box-shadow:0 4px 0 var(--warm-dark)}
+
+/* ===== 題目橫幅 ===== */
+.qcard{
+  max-width:1200px;margin:10px auto 0;
+  background:#fff;border-radius:16px;padding:12px 18px;
+  border:2px solid #bae6fd;box-shadow:0 6px 0 #dbeafe,0 10px 20px rgba(0,0,0,.06);
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+}
+.qtext{font-size:20px;font-weight:900;line-height:1.55;flex:1;min-width:260px}
+.qtext small{font-size:13.5px;color:var(--main);font-weight:900;display:block;margin-bottom:2px}
+mark{background:#fef08a;border-radius:5px;padding:0 4px;box-shadow:0 0 0 2px #f59e0b inset}
+.main{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.25fr 1fr;gap:16px;padding:12px 14px;
+}
+@media(max-width:1000px){.main{grid-template-columns:1fr}}
+
+/* ===== 左側：3D 透視舞台網格與真實容器場景 ===== */
+.scene{
+  border-radius:20px;padding:15px;
+  box-shadow:0 12px 28px rgba(15,23,42,.12),inset 0 0 0 3px rgba(255,255,255,.85);
+  position:relative;overflow:hidden;isolation:isolate;
+}
+.scene::before{
+  content:'';position:absolute;left:-55%;right:-55%;bottom:-8%;height:54%;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.65) 2px,transparent 2px),
+    linear-gradient(90deg,rgba(255,255,255,.65) 2px,transparent 2px);
+  background-size:44px 44px;
+  transform:perspective(420px) rotateX(64deg);
+  transform-origin:bottom;
+}
+.scene.home{background:linear-gradient(180deg,#ffe5d9 0%,#fff8f4 55%,#f7d6c4 100%)}
+.scene.shop{background:linear-gradient(180deg,#e0e7ff 0%,#f8fafc 55%,#c7d2fe 100%)}
+.scene.kitchen{background:linear-gradient(180deg,#fef3c7 0%,#fffbeb 55%,#fde68a 100%)}
+.scene.gym{background:linear-gradient(180deg,#d1fae5 0%,#f0fdf4 55%,#a7f3d0 100%)}
+.scene.fruit{background:linear-gradient(180deg,#ffedd5 0%,#fffaf5 55%,#fed7aa 100%)}
+
+.zoneHeader{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:8px;margin:8px 0 6px;
+}
+.zoneTitleText{font-weight:900;font-size:16.5px;color:#0f172a}
+.tag{
+  background:#fff;border:1.5px solid #cbd5e1;border-radius:10px;
+  padding:2px 10px;font-size:13.5px;color:var(--red);font-weight:900;
+  box-shadow:0 2px 0 rgba(0,0,0,.06);
+}
+.supply{
+  display:flex;flex-wrap:wrap;gap:5px;align-items:center;min-height:84px;
+  padding:10px;background:rgba(255,255,255,.82);
+  border:2.5px dashed var(--warm);border-radius:16px;
+  box-shadow:inset 0 3px 8px rgba(0,0,0,.06);
+}
+.targets{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;padding:4px 0}
+
+/* 通用 3D 容器與彈跳特效 */
+.target{
+  position:relative;background:linear-gradient(180deg,#ffffff,#f1f5f9);
+  border:2.5px solid #93c5fd;border-radius:18px;padding:10px;text-align:center;
+  flex:1;min-width:105px;
+  transform:perspective(850px) rotateX(7deg);
+  box-shadow:0 7px 0 #bfdbfe,0 12px 20px rgba(0,0,0,.12);
+  transition:transform .22s,box-shadow .22s,border-color .22s;
+}
+.target.hover{
+  border-color:var(--warm);
+  transform:perspective(850px) translateY(-5px) scale(1.04);
+  box-shadow:0 11px 0 #fbd38d,0 18px 26px rgba(0,0,0,.18);
+}
+.target.cur{
+  border-color:var(--warm);
+  box-shadow:0 7px 0 #fbd38d,0 0 0 4px rgba(244,162,97,.32),0 12px 18px rgba(0,0,0,.12);
+}
+.target.bonus{border-color:var(--red);background:linear-gradient(180deg,#fff,#fff1f0)}
+.jump{animation:jump3d .75s ease}
+@keyframes jump3d{
+  0%{transform:none}
+  35%{transform:perspective(360px) translateY(-14px) scale(1.07)}
+  75%{transform:scaleY(.93)}
+  100%{transform:none}
+}
+.nm{font-weight:900;font-size:14.5px;color:#1e293b}
+.cnt{font-size:17px;font-weight:900;color:var(--main);margin-top:4px}
+.bonus .cnt{color:var(--red)}
+
+/* 題 1：真實瓷碟（分糖果） */
+.plate{
+  display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-start;
+  gap:2px;min-height:60px;margin:6px auto 4px;padding:8px;
+  border-radius:50%/32%;
+  background:radial-gradient(ellipse at 50% 42%,#ffffff 55%,#dbeafe 100%);
+  border:2px solid #93c5fd;
+  box-shadow:0 5px 0 #93c5fd,inset 0 2px 6px rgba(0,0,0,.08);
+  transform:perspective(500px) rotateX(14deg);
+}
+
+/* ===== 題 3：真實紙漿壓模 6 格雞蛋盒（Egg Carton） ===== */
+.target.egg-carton-box{
+  flex:0 0 auto;min-width:142px;padding:10px 12px 8px;
+  background:linear-gradient(180deg,#e7cfb4 0%,#d3b089 100%);
+  border:3px solid #9c7448;border-radius:16px;
+  box-shadow:0 8px 0 #7f5a32,0 14px 20px rgba(0,0,0,.22);
+}
+.egg-carton-lid{
+  height:14px;margin:-6px -6px 6px;border-radius:10px 10px 4px 4px;
+  background:linear-gradient(180deg,#c69c6d,#a67c52);
+  border-bottom:2px solid #7f5a32;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;font-weight:900;color:#fff8eb;letter-spacing:1px;
+}
+.egg-carton-box .slots{
+  display:grid;grid-template-columns:repeat(3,34px);gap:6px;
+  padding:8px;border-radius:12px;
+  background:linear-gradient(180deg,#cca57c,#b5895d);
+  box-shadow:inset 0 4px 8px rgba(60,35,10,.38);
+  transform:perspective(480px) rotateX(18deg);
+}
+.egg-carton-box .slot{
+  width:34px;height:34px;border-radius:50%;
+  background:radial-gradient(circle at 50% 65%,#7a542e 0%,#9e7348 65%,#c49a6c 100%);
+  border:2px solid #6b4623;
+  box-shadow:inset 0 4px 6px rgba(0,0,0,.45),0 1px 0 rgba(255,255,255,.35);
+  display:flex;align-items:center;justify-content:center;
+}
+.egg-carton-box .slot.f{
+  background:radial-gradient(circle at 50% 65%,#8c6239 0%,#b88b5e 75%);
+  border-color:#f59e0b;
+}
+.egg-carton-box .slot .o{--s:28px;transform:translateY(-3px)}
+.egg-carton-box.full{
+  border-color:#16a34a;
+  box-shadow:0 8px 0 #15803d,0 14px 22px rgba(22,163,74,.25);
+}
+
+/* ===== 題 4：真實編織紋理運動籃子（Woven Sports Basket） ===== */
+.target.pingpong-basket-card{
+  min-width:128px;max-width:148px;padding:8px;
+  background:linear-gradient(180deg,#ffffff,#f0fdfa);
+  border:2.5px solid #2dd4bf;
+}
+.woven-basket{
+  position:relative;min-height:66px;margin:6px auto 4px;padding:12px 7px 7px;
+  border-radius:6px 6px 18px 18px;
+  background:
+    repeating-linear-gradient(45deg,rgba(180,83,9,.16) 0 6px,transparent 6px 12px),
+    repeating-linear-gradient(-45deg,rgba(180,83,9,.16) 0 6px,transparent 6px 12px),
+    linear-gradient(180deg,#fde68a,#f59e0b);
+  border:3px solid #b45309;
+  box-shadow:inset 0 5px 10px rgba(120,53,15,.35),0 6px 0 #92400e;
+  display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-start;gap:2px;
+  transform:perspective(500px) rotateX(12deg);
+}
+.woven-basket::before{
+  content:'';position:absolute;top:-5px;left:-4px;right:-4px;height:8px;
+  border-radius:6px;
+  background:linear-gradient(90deg,#92400e,#d97706 50%,#92400e);
+  box-shadow:0 2px 3px rgba(0,0,0,.25);
+}
+.woven-basket .o{margin:-1px}
+
+/* ===== 題 5：真實透明手挽網袋（放 7 個橙） ===== */
+.target.orange-bag-card{
+  flex:0 0 auto;min-width:154px;padding:18px 10px 8px;
+  background:
+    repeating-linear-gradient(45deg,transparent 0 7px,rgba(234,88,12,.14) 7px 8.5px),
+    repeating-linear-gradient(-45deg,transparent 0 7px,rgba(234,88,12,.14) 7px 8.5px),
+    linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,237,213,.88));
+  border:2.5px solid #ea580c;
+  border-radius:20px 20px 26px 26px;
+  box-shadow:0 8px 0 #c2410c,0 14px 22px rgba(234,88,12,.2);
+}
+.bag-handle{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  width:52px;height:16px;
+  border:4px solid #ea580c;border-bottom:none;
+  border-radius:16px 16px 0 0;
+  background:rgba(255,255,255,.65);
+}
+.bag-knot{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:36px;height:7px;border-radius:4px;background:#e11d48;
+}
+.orange-bag-card .slots{
+  display:grid;grid-template-columns:repeat(4,31px);gap:4px;
+  padding:7px;margin:4px auto;border-radius:14px;
+  background:rgba(255,255,255,.78);
+  border:1.5px solid #fdba74;
+  transform:perspective(480px) rotateX(15deg);
+}
+.orange-bag-card .slot{
+  width:31px;height:31px;border-radius:50%;
+  border:2px dashed #fb923c;background:#fff7ed;
+  display:flex;align-items:center;justify-content:center;
+}
+.orange-bag-card .slot .o{--s:26px}
+.orange-bag-card .slot.f{border:2px solid #16a34a;background:#f0fdf4}
+.orange-bag-card.full{
+  border-color:#16a34a;
+  box-shadow:0 8px 0 #15803d,0 14px 22px rgba(22,163,74,.24);
+}
+.slot.owe{border:2px dashed #e11d48!important;background:#fff1f2!important;position:relative}
+.slot.owe::after{content:'欠';position:absolute;color:#e11d48;font-weight:900;font-size:11px}
+.slot.x{border:2px solid #e11d48;color:#e11d48;background:#fef2f2;font-weight:900}
+.oweTag{
+  position:absolute;top:-10px;right:-8px;background:#e11d48;color:#fff;
+  border-radius:10px;padding:2px 8px;font-weight:900;font-size:12px;
+  box-shadow:0 3px 6px rgba(0,0,0,.2);
+}
+
+/* 分物區內置「➕ 新增 / ➖ 減少」按鈕組 */
+.box-ctrl-inline{display:inline-flex;align-items:center;gap:6px}
+.box-ctrl-inline button{padding:5px 11px;min-height:34px;font-size:13.5px;border-radius:9px}
+.add-box-card{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;min-width:128px;padding:12px;
+  border:2.5px dashed #f59e0b;border-radius:18px;background:rgba(255,255,255,.78);
+}
+.add-box-card button{width:100%;padding:7px 10px;min-height:36px;font-size:13.5px}
+
+/* 餘數區與實時算式面板 */
+.leftover{
+  min-height:58px;border:2.5px solid var(--red);background:rgba(254,242,242,.9);
+  border-radius:14px;padding:6px 10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+}
+.leftover .o{cursor:pointer;animation:glowRem .9s infinite alternate}
+@keyframes glowRem{to{filter:drop-shadow(0 0 8px #ef4444) drop-shadow(0 3px 2px rgba(0,0,0,.2))}}
+.remTag{background:var(--red);color:#fff;border-radius:10px;padding:4px 10px;font-weight:900;font-size:13.5px}
+.muted{font-size:14px;color:var(--muted);font-weight:700}
+.live{
+  margin:12px 0 8px;font-size:19px;font-weight:900;text-align:center;
+  background:#fff;border-radius:14px;padding:10px;line-height:1.55;
+  box-shadow:0 5px 0 #cbd5e1,0 8px 16px rgba(0,0,0,.06);
+}
+.live b{color:var(--main);font-size:25px}.live b.r{color:var(--red)}
+.guide-bar{
+  background:#fffbeb;border:2px solid #facc15;border-radius:14px;
+  padding:9px 14px;font-size:15.5px;font-weight:900;color:#78350f;line-height:1.45;
+  box-shadow:0 4px 0 #fde047;
+}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px;align-items:center}
+
+/* ===== 右側：答題面板 ===== */
+.ansPanel{
+  background:rgba(255,255,255,.94);border-radius:20px;padding:14px;
+  box-shadow:0 12px 28px rgba(15,23,42,.1);border:2px solid #cbd5e1;
+}
+.sec{
+  background:#fff;border-radius:14px;padding:10px 12px;margin-bottom:11px;
+  border:1.5px solid #e2e8f0;box-shadow:0 4px 0 #e2e8f0;
+}
+.sec h3{margin:0 0 8px;font-size:16.5px;color:var(--main-dark);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.req{background:var(--red);color:#fff;border-radius:6px;padding:1px 7px;font-size:12px}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+@media(max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{
+  display:flex;gap:8px;align-items:center;border:2px solid #cbd5e1;
+  border-radius:10px;padding:7px 10px;cursor:pointer;background:#f8fafc;
+  transition:transform .12s,border-color .12s;
+}
+.opt:hover{transform:translateX(3px);background:#f0f9ff}
+.opt .box2{
+  width:22px;height:22px;border:2px solid #64748b;border-radius:5px;
+  display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex:0 0 auto;
+}
+.opt.on{border-color:var(--main);background:#e0f2fe;box-shadow:0 3px 0 var(--main)}
+.opt.on .box2{background:var(--main);border-color:var(--main)}
+.opt b{font-size:15.5px}
+.eqRow{font-size:21px;font-weight:900;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
+input.num{
+  width:60px;height:42px;font-size:21px;font-weight:900;text-align:center;
+  border:2.5px solid #94a3b8;border-radius:10px;font-family:inherit;background:#fff;
+}
+input.num:focus{border-color:var(--warm);outline:none;background:#fffbeb}
+input.num.ok{border-color:#22c55e;background:#dcfce7;color:#14532d}
+input.num.bad{border-color:var(--red);background:#fef2f2;color:#991b1b;animation:shake .35s}
+.ldWrap{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-top:4px}
+table.ld{border-collapse:collapse;font-size:24px;font-weight:900}
+table.ld td{padding:3px 6px;text-align:center;min-width:46px;height:46px}
+td.br{
+  border-top:3.5px solid var(--dark);border-left:3.5px solid var(--dark);
+  border-top-left-radius:12px;padding:4px 12px!important;font-size:25px;letter-spacing:2px;
+}
+td.line{border-top:3px solid var(--dark)}
+.times{display:flex;flex-wrap:wrap;gap:4px;max-width:250px}
+.times span{background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:2px 7px;font-size:13.5px;font-weight:900}
+.times span.best{background:#dcfce7;border-color:#22c55e;color:#15803d}
+.times span.over{opacity:.38;text-decoration:line-through}
+.sent{font-size:19px;font-weight:900;line-height:2.2}
+.fb{margin-top:10px;border-radius:12px;padding:10px 12px;font-size:15.5px;font-weight:900;line-height:1.55}
+.fb.good{background:#dcfce7;border:2px solid #22c55e;color:#14532d}
+.fb.bad{background:#fef2f2;border:2px solid #fca5a5;color:#991b1b}
+.fb.info{background:#fffbeb;border:2px solid #fde047;color:#78350f}
+
+/* ===== 4 題小挑戰專區（5 大鷹架引導系統） ===== */
+#challengeView{max-width:1080px;margin:14px auto 36px;padding:0 14px}
+.challenge-panel{
+  background:#fff;border:3px solid var(--main);border-radius:20px;padding:20px;
+  box-shadow:0 14px 32px rgba(15,23,42,.1);
+}
+.ch-card{
+  border:2px solid #cbd5e1;border-radius:16px;padding:16px;margin-bottom:18px;
+  background:linear-gradient(180deg,#ffffff,#f8fafc);
+  box-shadow:0 5px 0 #e2e8f0;
+  transition:border-color .2s,box-shadow .2s;
+}
+.ch-card.done-card{border-color:#22c55e;background:#f0fdf4;box-shadow:0 5px 0 #86efac}
+.ch-card.partial-card{border-color:#f59e0b;background:#fffdf5;box-shadow:0 5px 0 #fde68a}
+.ch-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.ch-q{font-size:18.5px;font-weight:900;color:var(--dark);flex:1;min-width:240px;line-height:1.6}
+.ch-hint-box{
+  background:#fffbeb;border:2px dashed #f59e0b;border-radius:12px;
+  padding:10px 14px;margin-bottom:10px;font-size:14.5px;font-weight:900;color:#92400e;line-height:1.6;
+}
+.ch-hint-step{
+  padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.78);
+  border-left:4px solid #f59e0b;margin-top:6px;
+}
+.ch-scaffold-box{
+  margin-top:8px;padding:10px 12px;border-radius:10px;
+  background:#eff6ff;border:2px solid #60a5fa;color:#1e3a8a;
+  font-size:15.5px;font-weight:900;display:flex;align-items:center;flex-wrap:wrap;gap:6px;
+}
+.ch-sim-box{
+  background:linear-gradient(180deg,#f0f9ff,#e0f2fe);
+  border:2px solid #7dd3fc;border-radius:14px;padding:12px;margin-bottom:12px;
+}
+.ch-sim-stage{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  min-height:68px;padding:8px;background:rgba(255,255,255,.85);
+  border-radius:10px;border:1.5px dashed #38bdf8;margin:8px 0;
+}
+.ch-sim-group{
+  display:inline-flex;flex-direction:column;align-items:center;
+  background:#fff;border:2px solid #0284c7;border-radius:10px;padding:5px 8px;
+  box-shadow:0 3px 0 #bae6fd;animation:pop3d .4s both;
+}
+.ch-sim-group.extra-g{border-color:#e11d48;background:#fff1f2;box-shadow:0 3px 0 #fecdd3}
+.ch-rem-actions{
+  display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+  padding:8px 10px;background:#fffbeb;border:1.5px solid #fcd34d;border-radius:10px;margin-top:6px;
+}
+.ch-rem-actions button{
+  padding:5px 10px!important;min-height:32px!important;font-size:12.5px!important;border-radius:8px!important;
+}
+.ch-times-bar{
+  display:flex;flex-wrap:wrap;gap:5px;padding:8px 10px;margin-bottom:10px;
+  background:#f8fafc;border:1.5px solid #cbd5e1;border-radius:10px;align-items:center;
+}
+.ch-times-bar span{
+  background:#fff;border:1.5px solid #cbd5e1;border-radius:6px;
+  padding:2px 8px;font-size:13px;font-weight:900;color:#334155;
+}
+.ch-times-bar span.best{
+  background:#dcfce7;border-color:#16a34a;color:#15803d;
+  box-shadow:0 0 0 2px rgba(22,163,74,.25);
+}
+.ch-times-bar span.over{opacity:.38;text-decoration:line-through}
+.ch-grid{display:grid;grid-template-columns:1fr 220px;gap:12px;align-items:center}
+@media(max-width:700px){.ch-grid{grid-template-columns:1fr}}
+.ch-diag-box{
+  margin-top:10px;padding:10px 14px;border-radius:12px;
+  font-size:14.5px;font-weight:900;line-height:1.6;
+}
+.ch-diag-box.ok{background:#dcfce7;border:2px solid #22c55e;color:#14532d}
+.ch-diag-box.partial{background:#fef9c3;border:2px solid #eab308;color:#713f12}
+.ch-diag-box.err{background:#fff1f2;border:2px solid #fda4af;color:#9f1239}
+
+/* ===== 品德好學生表揚卡（自動印上班別與學號） ===== */
+.cert-wrapper{
+  position:relative;max-width:520px;margin:12px auto;
+  border:3px solid #1e293b;border-radius:14px;overflow:hidden;
+  background:#fffdf7;box-shadow:0 12px 30px rgba(0,0,0,.2);
+}
+.cert-wrapper img{width:100%;height:auto;display:block}
+.cert-class-overlay{
+  position:absolute;top:27.2%;left:10.5%;width:13%;text-align:center;
+  font-size:clamp(18px,3.8vw,26px);font-weight:900;color:#1e3a8a;pointer-events:none;
+}
+.cert-seat-overlay{
+  position:absolute;top:27.2%;left:31.5%;width:24%;text-align:center;
+  font-size:clamp(18px,3.8vw,26px);font-weight:900;color:#1e3a8a;pointer-events:none;
+}
+
+/* 彈窗與 3D 飛行特效 */
+.modalBg{position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:80;display:flex;align-items:center;justify-content:center;padding:14px}
+.modal{background:#fff;border-radius:20px;padding:20px;max-width:920px;width:100%;max-height:92vh;overflow:auto;border:3px solid var(--main)}
+table.rec{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+table.rec th,table.rec td{border:1px solid #cbd5e1;padding:7px;text-align:center}
+table.rec th{background:#e0f2fe;font-weight:900}
+.modal input[type=text],.modal input[type=password],.modal select{font-size:16px;padding:7px 10px;border-radius:8px;border:2px solid #94a3b8;font-weight:700}
+pre{background:#f1f5f9;padding:10px;border-radius:8px;overflow:auto;font-size:12.5px}
+.flyer{position:fixed;z-index:99;pointer-events:none;will-change:transform}
+.flyer.drag{filter:drop-shadow(0 16px 10px rgba(0,0,0,.32))}
+.fx{position:fixed;z-index:98;pointer-events:none;font-size:26px}
+.shake{animation:shake .38s}
+@keyframes shake{20%,60%{translate:-7px 0}40%,80%{translate:7px 0}}
+</style>
+</head>
+<body>
+
+<!-- ===== 立體仿真物件 SVG 圖庫 ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <radialGradient id="gCandy" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ff8fb1"/><stop offset="1" stop-color="#c2255c"/></radialGradient>
+  <linearGradient id="gWrap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0f6"/><stop offset=".5" stop-color="#ffb3cc"/><stop offset="1" stop-color="#e64980"/></linearGradient>
+  <radialGradient id="gCoin" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#fff9db"/><stop offset=".45" stop-color="#ffd43b"/><stop offset="1" stop-color="#b45309"/></radialGradient>
+  <radialGradient id="gEgg" cx="38%" cy="30%" r="80%"><stop offset="0" stop-color="#fffaf2"/><stop offset=".5" stop-color="#f1d6b3"/><stop offset="1" stop-color="#c08552"/></radialGradient>
+  <radialGradient id="gBall" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#f8f9fa"/><stop offset="1" stop-color="#adb5bd"/></radialGradient>
+  <radialGradient id="gOrange" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#ffe3a8"/><stop offset=".4" stop-color="#ffa62b"/><stop offset="1" stop-color="#d9480f"/></radialGradient>
+  <linearGradient id="gLeaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ce99a"/><stop offset="1" stop-color="#2b8a3e"/></linearGradient>
+  <linearGradient id="gPenBody" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#60a5fa"/><stop offset=".5" stop-color="#2563eb"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient>
+  <pattern id="pDimple" width="5" height="5" patternUnits="userSpaceOnUse">
+    <circle cx="1.5" cy="1.5" r=".7" fill="#a63e00" opacity=".38"/>
+    <circle cx="4" cy="4" r=".5" fill="#fff" opacity=".32"/>
+  </pattern>
+</defs>
+
+<symbol id="candy" viewBox="0 0 64 64">
+  <path d="M19 32 L3 19 Q9 32 3 45 Z" fill="url(#gWrap)" stroke="#d6336c" stroke-width="1"/>
+  <path d="M45 32 L61 19 Q55 32 61 45 Z" fill="url(#gWrap)" stroke="#d6336c" stroke-width="1"/>
+  <path d="M8 26 L17 31 M8 38 L17 33 M56 26 L47 31 M56 38 L47 33" stroke="#fff" stroke-width="1.2" opacity=".8"/>
+  <ellipse cx="32" cy="32" rx="16" ry="14" fill="url(#gCandy)"/>
+  <path d="M23 21 Q31 32 24 43 M34 18.5 Q42 32 34 45.5" stroke="#fff" stroke-width="3.5" fill="none" opacity=".75" stroke-linecap="round"/>
+  <ellipse cx="26" cy="24" rx="6" ry="3" fill="#fff" opacity=".85" transform="rotate(-25 26 24)"/>
+</symbol>
+
+<symbol id="coin" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="27" fill="url(#gCoin)" stroke="#92400e" stroke-width="2"/>
+  <circle cx="32" cy="32" r="25.5" fill="none" stroke="#78350f" stroke-width="2" stroke-dasharray="1.5 2" opacity=".55"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#fef08a" stroke-width="1.5"/>
+  <text x="32" y="40" text-anchor="middle" font-size="22" font-weight="900" fill="#78350f" font-family="Arial,sans-serif">$1</text>
+  <ellipse cx="23" cy="19" rx="9" ry="4" fill="#fff" opacity=".7" transform="rotate(-30 23 19)"/>
+</symbol>
+
+<symbol id="egg" viewBox="0 0 64 64">
+  <path d="M32 5 C19 5 11 27 11 39 C11 52 20 60 32 60 C44 60 53 52 53 39 C53 27 45 5 32 5Z" fill="url(#gEgg)" stroke="#a0673a" stroke-width="1.2"/>
+  <circle cx="40" cy="44" r="1.1" fill="#a0673a" opacity=".55"/>
+  <circle cx="24" cy="48" r=".9" fill="#a0673a" opacity=".55"/>
+  <ellipse cx="25" cy="22" rx="6" ry="9" fill="#fff" opacity=".62" transform="rotate(18 25 22)"/>
+</symbol>
+
+<symbol id="pingpong" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="25" fill="url(#gBall)" stroke="#94a3b8" stroke-width="1.2"/>
+  <path d="M8 35 Q32 25 56 35" stroke="#ced4da" stroke-width="1.4" fill="none"/>
+  <text x="32" y="45" text-anchor="middle" font-size="9" fill="#f08c00" font-weight="bold" font-family="Arial,sans-serif">★★★</text>
+  <ellipse cx="23" cy="20" rx="8" ry="4.5" fill="#fff" transform="rotate(-30 23 20)"/>
+</symbol>
+
+<symbol id="orange" viewBox="0 0 64 64">
+  <circle cx="32" cy="35" r="24" fill="url(#gOrange)"/>
+  <circle cx="32" cy="35" r="24" fill="url(#pDimple)"/>
+  <path d="M32 13 q1 -4 3 -6" stroke="#6b4423" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M34 11 C40 2 52 4 55 8 C49 14 41 14 34 11Z" fill="url(#gLeaf)"/>
+  <ellipse cx="23" cy="25" rx="7" ry="4" fill="#fff" opacity=".55" transform="rotate(-30 23 25)"/>
+</symbol>
+
+<symbol id="pen" viewBox="0 0 64 64">
+  <rect x="25" y="4" width="14" height="9" rx="3" fill="#e11d48"/>
+  <path d="M39 9 L44 9 L44 26 L41 26 L41 12 L39 12 Z" fill="#f43f5e"/>
+  <rect x="23" y="11" width="18" height="34" rx="3" fill="url(#gPenBody)" stroke="#1e3a8a" stroke-width="1.2"/>
+  <rect x="23" y="29" width="18" height="10" fill="#93c5fd" opacity=".45"/>
+  <polygon points="23,45 41,45 32,59" fill="#fde68a" stroke="#d97706" stroke-width="1"/>
+  <polygon points="29,54 35,54 32,61" fill="#1e293b"/>
+  <rect x="26" y="14" width="3" height="28" rx="1.5" fill="#fff" opacity=".6"/>
+</symbol>
+
+<symbol id="mooncake" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="24" fill="#d97706" stroke="#92400e" stroke-width="2.5" stroke-dasharray="6 3"/>
+  <circle cx="32" cy="32" r="19" fill="#f59e0b" stroke="#b45309" stroke-width="1.5"/>
+  <rect x="22" y="22" width="20" height="20" rx="4" fill="none" stroke="#78350f" stroke-width="1.8"/>
+  <circle cx="32" cy="32" r="4" fill="#fef08a"/>
+</symbol>
+<symbol id="book" viewBox="0 0 64 64">
+  <rect x="14" y="8" width="36" height="48" rx="4" fill="#2563eb" stroke="#1e3a8a" stroke-width="2"/>
+  <rect x="18" y="8" width="6" height="48" fill="#1d4ed8"/>
+  <rect x="27" y="16" width="18" height="12" rx="2" fill="#fef08a"/>
+  <path d="M28 36 H44 M28 42 H40" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+</symbol>
+<symbol id="marble" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="22" fill="#38bdf8" stroke="#0284c7" stroke-width="2"/>
+  <path d="M20 38 Q32 18 44 28 Q34 46 20 38 Z" fill="#22c55e" opacity=".75"/>
+  <ellipse cx="24" cy="22" rx="7" ry="4" fill="#fff" opacity=".8" transform="rotate(-25 24 22)"/>
+</symbol>
+<symbol id="rose" viewBox="0 0 64 64">
+  <path d="M32 34 L32 58" stroke="#15803d" stroke-width="4" stroke-linecap="round"/>
+  <path d="M32 45 C42 40 46 46 32 49" fill="#22c55e"/>
+  <circle cx="32" cy="24" r="14" fill="#e11d48" stroke="#9f1239" stroke-width="1.5"/>
+  <path d="M24 22 Q32 14 40 22 Q32 30 24 22 Z" fill="#fda4af" opacity=".6"/>
+</symbol>
+</svg>
+
+<!-- ===== 學生登入畫面 ===== -->
+<section id="login">
+  <div class="hero-showcase" id="hero"></div>
+  <div style="font-size:14px;font-weight:900;color:var(--main)">香海正覺蓮社佛教正慧小學｜二零二五至二零二六年度上學期</div>
+  <h1 style="margin:6px 0 8px;font-size:28px;color:var(--dark)">三年級數學科課業：除法 (3.2)</h1>
+  <p style="margin:0 0 14px;font-weight:700;color:var(--muted)">
+    親自動手體驗 3D 分物，完成 5 題課業及 4 題小挑戰後，可換領印有你班別及學號的《品德好學生表揚卡》！
+  </p>
+  <div style="text-align:left;font-weight:900;color:var(--main-dark);font-size:15.5px">1. 選擇班別：</div>
+  <div class="pick" id="pickCls"></div>
+  <div style="text-align:left;font-weight:900;color:var(--main-dark);font-size:15.5px">2. 選擇學號（1 – 28 號）：</div>
+  <div class="pick" id="pickNo"></div>
+  <p id="loginTip" style="font-weight:900;color:var(--red);min-height:22px">請先點選班別和學號！</p>
+  <button class="btn" id="bStart" disabled style="width:100%;font-size:17px;padding:12px">🚀 開始完成除法課業</button>
+  <div style="margin-top:16px;padding-top:12px;border-top:1.5px dashed #cbd5e1">
+    <button class="btn gray" id="bTeacher1" style="width:100%;font-size:14px">🔒 老師觀看結果（雲端 Excel 成績後台）</button>
+  </div>
+</section>
+
+<!-- ===== 主程式介面 ===== -->
+<section id="app" class="hidden">
+  <header class="top">
+    <div class="title">
+      ÷ 除法 (3.2) — 互動分物與餘數處理
+      <small>香海正覺蓮社佛教正慧小學｜P.3 數學科課業</small>
+    </div>
+    <span class="chip">班別學號：<strong id="who">未選擇</strong>　<a href="#" id="bChange" style="color:#fef08a">更改</a></span>
+    <span class="chip" id="prog">課業：0 / 5 題</span>
+    <button class="btn warm" id="bGoChallenge">🌟 小挑戰 (4題) 換表揚卡</button>
+    <button class="btn gray" id="bTeacher2">🔒 老師後台</button>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+
+  <!-- 5 條課業題目視圖 -->
+  <div id="worksheetView">
+    <div class="qcard" id="qcard">
+      <div class="qtext">
+        <small id="qno"></small>
+        <div id="qtext"></div>
+      </div>
+      <button class="btn warm" id="bKw">🖍️ 圈出關鍵字提示</button>
+      <button class="btn" id="bRead">🔊 粵語讀題</button>
+    </div>
+
+    <div class="main">
+      <div id="sim" class="scene"></div>
+      <div id="ans" class="ansPanel"></div>
+    </div>
+  </div>
+
+  <!-- 完成 5 題後的「4 條題目小挑戰（配備 5 大鷹架引導系統）」視圖 -->
+  <div id="challengeView" class="hidden">
+    <div class="challenge-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-bottom:2.5px solid #e2e8f0;padding-bottom:12px;margin-bottom:16px">
+        <div>
+          <div style="font-size:13.5px;font-weight:900;color:var(--warm-dark)">🌟 除法 (3.2) 進階鞏固挑戰（配備三層漸進式提問 & 互動分物模擬器）</div>
+          <h2 style="margin:2px 0 0;color:var(--main-dark);font-size:23px">餘數處理小挑戰（共 4 題）</h2>
+          <p style="margin:4px 0 0;font-size:14.5px;color:var(--muted);font-weight:700">
+            請先在「🧪 互動分物模擬器」體驗分物並<strong>親自選擇怎樣處理餘數</strong>。若遇到困難，系統會一步一步引導你思考，絕不直接給出答案！
+          </p>
+        </div>
+        <button class="btn gray" id="bBackWorksheet">⬅ 返回 5 題課業</button>
+      </div>
+
+      <div id="challengeList"></div>
+
+      <div id="challengeFeedback" class="fb info" style="margin-top:12px">
+        💡 請完成以上 4 題小挑戰，遇到困難可點擊每題的「🪜 漸進提示」或「📖 九因歌幫手」！
+      </div>
+
+      <div class="ctrl" style="margin-top:14px">
+        <button class="btn green" id="bCheckChallenge" style="font-size:17px;padding:12px 28px">🏆 檢查小挑戰並換領表揚卡</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="modal" class="modalBg hidden"><div class="modal" id="modalBox"></div></div>
+
+<!-- ===== Firebase 雲端即時同步 + Google 試算表 (1aN8XDeLJJWfpFkM64v6JgA3dKmH_MWlWOhaxYi6CPIQ) ===== -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+const GOOGLE_SHEET_ID = "1aN8XDeLJJWfpFkM64v6JgA3dKmH_MWlWOhaxYi6CPIQ";
+const STORAGE_GAS_KEY = "hk_p3_math_div32_gas_url";
+
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'p3-math-division-3-2';
+const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+
+let db = null;
+let auth = null;
+let firestoreRecords = [];
+let sheetRecords = [];
+
+function getGasUrl() {
+  return localStorage.getItem(STORAGE_GAS_KEY) || "";
+}
+
+function getCombinedRecords() {
+  const map = new Map();
+  let localList = [];
+  try {
+    const s = localStorage.getItem("local_p3_math_div_scores");
+    if (s) localList = JSON.parse(s);
+  } catch (e) {}
+
+  [...sheetRecords, ...firestoreRecords, ...localList].forEach((r) => {
+    if (!r) return;
+    const key = `${r.timeStr || r.time || ""}_${r.className || r.cls || ""}_${r.seatNum || r.no || ""}_${r.score}`;
+    if (!map.has(key)) map.set(key, {
+      timeStr: r.timeStr || r.time || "",
+      className: r.className || r.cls || "",
+      seatNum: r.seatNum || r.no || "",
+      expDone: r.expDone || `${r.done || 5}/5`,
+      score: Number(r.score || 0),
+      passed: r.passed !== undefined ? r.passed : (Number(r.score || 0) >= 70),
+      weakPoints: r.weakPoints || r.errors || "全對",
+      timestampMs: r.timestampMs || Date.now()
+    });
+  });
+
+  return Array.from(map.values()).sort((a, b) => (b.timestampMs || 0) - (a.timestampMs || 0));
+}
+
+async function fetchFromGoogleSheet() {
+  const gasUrl = getGasUrl();
+  if (gasUrl && gasUrl.startsWith("https://script.google.com/")) {
+    try {
+      const res = await fetch(gasUrl);
+      const rows = await res.json();
+      if (Array.isArray(rows) && rows.length > 1) {
+        const parsed = [];
+        for (let i = 1; i < rows.length; i++) {
+          const r = rows[i];
+          if (!r || (!r[1] && !r[2])) continue;
+          const scoreNum = Number(String(r[4] || "0").replace(/[^0-9.]/g, "")) || 0;
+          parsed.push({
+            timeStr: String(r[0] || ""),
+            className: String(r[1] || ""),
+            seatNum: String(r[2] || "").replace(/[^0-9]/g, ""),
+            expDone: String(r[3] || "5/5"),
+            score: scoreNum,
+            passed: scoreNum >= 70,
+            weakPoints: String(r[6] || "全對"),
+            timestampMs: Number(r[7]) || Date.parse(String(r[0] || "")) || i
+          });
+        }
+        sheetRecords = parsed;
+        return;
+      }
+    } catch (err) {}
+  }
+
+  try {
+    const url = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?tqx=out:json`;
+    const res = await fetch(url);
+    const txt = await res.text();
+    const match = txt.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);/);
+    if (!match) return;
+    const data = JSON.parse(match[1]);
+    if (!data.table || !data.table.rows) return;
+
+    const parsed = [];
+    data.table.rows.forEach((row, idx) => {
+      const c = row.c;
+      if (!c) return;
+      const timeStr = c[0]?.f || c[0]?.v || "";
+      const className = c[1]?.v || "";
+      const seatNum = c[2]?.v || "";
+      if (timeStr === "提交時間" || className === "班別" || (!className && !seatNum)) return;
+      const expDone = c[3]?.v || "5/5";
+      const score = Number(c[4]?.v ?? 0);
+      const weakPoints = c[6]?.v || "全對";
+      const ts = Number(c[7]?.v) || Date.parse(timeStr) || (1700000000000 + idx * 1000);
+
+      parsed.push({
+        timeStr: String(timeStr),
+        className: String(className),
+        seatNum: String(seatNum).replace("號", "").trim(),
+        expDone: String(expDone),
+        score,
+        passed: score >= 70,
+        weakPoints: String(weakPoints),
+        timestampMs: ts
+      });
+    });
+    sheetRecords = parsed;
+  } catch (e) {}
+}
+
+async function initFirebase() {
+  fetchFromGoogleSheet();
+  try {
+    if (!firebaseConfig || Object.keys(firebaseConfig).length === 0) return;
+    const app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    auth = getAuth(app);
+
+    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+      await signInWithCustomToken(auth, __initial_auth_token);
+    } else {
+      await signInAnonymously(auth);
+    }
+
+    const scoresColRef = collection(db, 'artifacts', appId, 'public', 'data', 'p3_math_division_scores');
+    onSnapshot(scoresColRef, (snapshot) => {
+      firestoreRecords = [];
+      snapshot.forEach((docSnap) => {
+        firestoreRecords.push({ id: docSnap.id, ...docSnap.data() });
+      });
+    }, () => {});
+  } catch (e) {}
+}
+
+async function saveRecordCloud(recordObj) {
+  try {
+    const saved = localStorage.getItem("local_p3_math_div_scores");
+    const list = saved ? JSON.parse(saved) : [];
+    list.unshift(recordObj);
+    localStorage.setItem("local_p3_math_div_scores", JSON.stringify(list));
+  } catch (e) {}
+
+  const gasUrl = getGasUrl();
+  if (gasUrl && gasUrl.startsWith("https://script.google.com/")) {
+    try {
+      await fetch(gasUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(recordObj)
+      });
+      setTimeout(fetchFromGoogleSheet, 1500);
+    } catch (e) {}
+  }
+
+  if (db && auth?.currentUser) {
+    try {
+      const scoresColRef = collection(db, 'artifacts', appId, 'public', 'data', 'p3_math_division_scores');
+      await addDoc(scoresColRef, recordObj);
+    } catch (err) {}
+  }
+}
+
+initFirebase();
+window.cloudRecords = getCombinedRecords;
+window.saveRecordCloud = saveRecordCloud;
+window.refreshGoogleSheet = fetchFromGoogleSheet;
+</script>
+
+<!-- ===== 主互動、3D 拋物線翻轉特效與小挑戰 5 大鷹架引導系統（無音效） ===== -->
+<script>
+const CFG = {
+  TEACHER_PINS: ['wisdom2668', '1234'],
+  SHEET_ID: '1aN8XDeLJJWfpFkM64v6JgA3dKmH_MWlWOhaxYi6CPIQ',
+  STORAGE_GAS_KEY: 'hk_p3_math_div32_gas_url',
+  PER_Q: 20,
+  PASS: 70
+};
+
+/* ================== 5 條課業題目 ================== */
+const QUESTIONS = [
+  {
+    id: 'q1',
+    mode: 'share',
+    modeLabel: '⚖️ 等分除：平均分給 3 人，一輪一輪派',
+    total: 25,
+    n: 3,
+    who: '人',
+    item: 'candy',
+    itemName: '糖果',
+    unit: '粒',
+    packName: '1 包糖果（10 粒）',
+    packCls: 'bag',
+    receivers: ['我','哥哥','妹妹'],
+    supplyName: '🍬 糖果盒',
+    targetTitle: '🍽️ 分物區：平均分給我、哥哥和妹妹（3 人）',
+    scene: 'home',
+    text: '1) 媽媽把糖果25粒平均分給我、哥哥和妹妹，每人可分得糖果多少粒？餘下多少粒？',
+    keywords: ['平均分給','我、哥哥和妹妹','每人','餘下多少粒'],
+    handling: 'qr',
+    sentence: ['每人可分得糖果','粒，餘下','粒。'],
+    divTip: '除數是「平均分給多少人」：我、哥哥和妹妹，共 3 人。',
+    hTip: '題目同時問「每人多少粒」和「餘下多少粒」，所以要選「商」及「餘數」。',
+    handleMsg: (qt,r) => `題目問「每人可分得多少粒」（商 ${qt}）和「餘下多少粒」（餘數 ${r}），兩個都要答：【「商」及「餘數」】！`
+  },
+  {
+    id: 'q2',
+    mode: 'coinCircle',
+    modeLabel: '⭕ 包含除：41 個 $1，每 5 元圈一圈換 1 枝筆',
+    total: 41,
+    size: 5,
+    item: 'coin',
+    itemName: '$1 硬幣',
+    unit: '元',
+    cWord: '枝',
+    verb: '買',
+    supplyName: '👛 子明的 41 個 $1 硬幣（點選或滑過 5 個 $1 圈一圈）',
+    targetTitle: '🖊️ 分物區：購買藍紅原子筆（每圈滿 5 元動態出現 1 枝筆）',
+    scene: 'shop',
+    text: '2) 每枝原子筆售5元，子明有41元，他最多可買原子筆多少枝？',
+    keywords: ['每枝原子筆售5元','41元','最多可買'],
+    handling: 'q',
+    sentence: ['他最多可買原子筆','枝。'],
+    divTip: '除數是「每枝原子筆售多少元」（5 元）。',
+    hTip: '圈完 8 圈（買了 8 枝筆）後，餘下的 1 元不夠 5 元買 1 枝筆，所以只要「商」。',
+    extraLabel: '✖ 餘下 1 元不夠買 1 枝',
+    leftMsg: (l,d) => `餘下 ${l} 元不夠 ${d} 元，買不到 1 枝原子筆，不計算。`,
+    handleMsg: (qt,r,d) => `餘下 ${r} 元，不夠 ${d} 元買 1 枝原子筆，所以捨去不計。最多只可買 ${qt} 枝：【只要「商」】。`
+  },
+  {
+    id: 'q3',
+    mode: 'manualBox',
+    modeLabel: '🥚 包含除：點選雞蛋飛入真實雞蛋盒，自行加減蛋盒',
+    total: 35,
+    size: 6,
+    item: 'egg',
+    itemName: '雞蛋',
+    unit: '隻',
+    cWord: '個',
+    boxName: '雞蛋盒',
+    verb: '裝滿',
+    supplyName: '🥚 待分雞蛋（共 35 隻，點選雞蛋飛入下方真實雞蛋盒）',
+    targetTitle: '📦 分物區：真實 6 格雞蛋盒（每盒可放半打 6 隻）',
+    scene: 'kitchen',
+    text: '3) 每個盒子可放雞蛋半打，現有雞蛋35隻，最少要盒子多少個才可擺放所有雞蛋？',
+    keywords: ['半打','35隻','最少要盒子多少個','所有雞蛋'],
+    handling: 'q1',
+    sentence: ['最少要盒子','個才可擺放所有雞蛋。'],
+    divTip: '半打 ＝ 6 隻，所以除數是 6。',
+    hTip: '裝滿 5 個雞蛋盒（30隻）後，餘下的 5 隻雞蛋也要擺放，所以要多用 1 個盒子：「商」+1。',
+    extraLabel: '第 6 個雞蛋盒（裝餘下 5 隻）',
+    leftMsg: l => `餘下的 ${l} 隻雞蛋放進了新增的第 6 個雞蛋盒！`,
+    handleMsg: (qt,r) => `餘下的 ${r} 隻雞蛋也要擺放，所以要多加 1 個雞蛋盒：${qt} ＋ 1 ＝ ${qt+1}（個），選【「商」+1】！`
+  },
+  {
+    id: 'q4',
+    mode: 'share',
+    modeLabel: '⚖️ 等分除：平均放入 8 個真實編織籃子，一輪一輪放',
+    total: 69,
+    n: 8,
+    who: '個籃子',
+    item: 'pingpong',
+    itemName: '乒乓球',
+    unit: '個',
+    packName: '1 筒乒乓球（10 個）',
+    packCls: 'tube',
+    receivers: [1,2,3,4,5,6,7,8].map(i=>'籃子 '+i),
+    supplyName: '🏓 乒乓球箱',
+    targetTitle: '🧺 分物區：平均放於 8 個真實運動籃子中',
+    scene: 'gym',
+    text: '4) 有乒乓球69個，平均放於8個籃子中，剩餘的乒乓球再放於其中一個籃子內，這個籃子共有乒乓球多少個？',
+    keywords: ['平均放於8個籃子中','剩餘的乒乓球','其中一個籃子','共有'],
+    handling: 'qr+',
+    sentence: ['這個籃子共有乒乓球','個。'],
+    divTip: '除數是「平均放於多少個籃子」（8 個）。',
+    hTip: '剩餘的 5 個乒乓球再放進其中一個籃子，所以這個籃子共有「商」+「餘數」個。',
+    leftMsg: l => `剩餘的 ${l} 個乒乓球已放進「籃子 1」！`,
+    handleMsg: (qt,r) => `剩餘的 ${r} 個乒乓球放進籃子 1，這個籃子共有：${qt} ＋ ${r} ＝ ${qt+r}（個），選【「商」+「餘數」】！`
+  },
+  {
+    id: 'q5',
+    mode: 'manualBox',
+    modeLabel: '🍊 包含除：點選鮮橙飛入真實手挽網袋，自行加減橙袋',
+    total: 60,
+    size: 7,
+    item: 'orange',
+    itemName: '鮮橙',
+    unit: '個',
+    cWord: '袋',
+    boxName: '橙袋',
+    verb: '包滿',
+    supplyName: '🍊 水果店鮮橙（共 60 個，點選鮮橙飛入下方真實包裝網袋）',
+    targetTitle: '🛍️ 分物區：真實手挽包裝袋（每袋放 7 個橙）',
+    scene: 'fruit',
+    text: '5) 水果店有橙60個，店員將橙每7個包裝成一袋，要把所有橙包裝出售，他們尚欠橙多少個？',
+    keywords: ['每7個包裝成一袋','所有橙','尚欠'],
+    handling: 'dr',
+    sentence: ['他們尚欠橙','個。'],
+    divTip: '除數是「每袋包裝多少個」（7 個）。',
+    hTip: '包滿 8 袋（56個）後，第 9 個網袋只有餘下的 4 個橙，一袋要 7 個，尚欠 7 - 4 = 3 個：「除數」-「餘數」。',
+    extraLabel: '第 9 個網袋（已有4個，欠3個）',
+    leftMsg: (l,d) => `第 9 個網袋只有 ${l} 個橙，一袋要 ${d} 個，尚欠 ${d-l} 個！`,
+    handleMsg: (qt,r,d) => `最後一袋只有 ${r} 個橙，每袋要 ${d} 個，所以尚欠：${d} － ${r} ＝ ${d-r}（個），選【「除數」-「餘數」】！`
+  }
+];
+
+/* ================== 4 條小挑戰題目（實裝第 1、2、3、4、5 點引導式回饋系統） ================== */
+const CHALLENGE_QS = [
+  {
+    id: 'c1',
+    text: '挑戰 1：每個紙盒可裝月餅 4 個，現有月餅 30 個，最少要紙盒多少個才可把所有月餅裝起？',
+    keywords: ['每個紙盒可裝月餅 4 個', '最少要紙盒多少個', '所有月餅裝起'],
+    total: 30,
+    divisor: 4,
+    quotient: 7,
+    rem: 2,
+    svgId: 'mooncake',
+    itemName: '月餅',
+    groupLabel: '盒',
+    handling: 'q1',
+    ans: 8,
+    unit: '個',
+    // 第 1 點：三層漸進式提示（絕不直接寫出最終答案 8）
+    hintL1: '🌱 第一層（審題關鍵字提問）：請看題目黃色螢光筆字眼——要把「所有月餅裝起」。裝滿幾盒之後，餘下未裝滿的月餅可唔可以丟低唔裝呀？',
+    hintL2: '🌿 第二層（引導觀察模擬器）：請看上方模擬器，30 個月餅每 4 個裝一盒，已經裝滿了幾盒（商）？紅框入面仲剩低幾多個未裝（餘數）？請在模擬器點擊「➕ 拿 1 個新紙盒裝起餘數」數數共有幾盒！',
+    scaffoldL3: '🌳 第三層（算式鷹架）：已裝滿 <b>7</b> 盒，餘下的 2 個月餅也要多加 <b>1</b> 個紙盒，所以最少要紙盒：<b>7 ＋ 1 ＝ ？</b>（請填入下方最終答案格）',
+    // 第 2 點：根據學生輸入的錯誤數字進行精準反問診斷
+    diagnoseVal: (v) => {
+      if (v === 7) return '🎯 錯因診斷：你計出商是 7 盒很準確！但如果只用 7 個紙盒（只裝到 4 × 7 ＝ 28 個），餘下嗰 2 個月餅點算呀？題目話要把「所有」月餅裝起喎！';
+      if (v === 9) return '🎯 錯因診斷：小心！餘下嗰 2 個月餅可以一齊放進同 1 個新紙盒入面，唔使每個餘數月餅各用 1 個盒（唔係 7 ＋ 2 呀）！';
+      if (v === 2) return '🎯 錯因診斷：2 是餘下的月餅數量（餘數），但題目問緊總共最少要「紙盒多少個」才可裝起所有月餅喔！';
+      return null;
+    }
+  },
+  {
+    id: 'c2',
+    text: '挑戰 2：每本故事書售 9 元，小華有 50 元，他最多可買故事書多少本？',
+    keywords: ['每本故事書售 9 元', '50 元', '最多可買'],
+    total: 50,
+    divisor: 9,
+    quotient: 5,
+    rem: 5,
+    svgId: 'book',
+    itemName: '故事書',
+    groupLabel: '本',
+    handling: 'q',
+    ans: 5,
+    unit: '本',
+    hintL1: '🌱 第一層（審題關鍵字提問）：請看題目黃色螢光筆字眼——每本故事書售 9 元，問「最多可買多少本」。買完幾本之後，如果剩下的錢唔夠 9 元，仲買唔買到多 1 本書呀？',
+    hintL2: '🌿 第二層（引導觀察模擬器）：請看上方模擬器，用 9 的九因歌想想 9 × ? 最接近 50。買完這幾本書後，紅框剩下的 5 元夠唔夠 9 元再買 1 本？',
+    scaffoldL3: '🌳 第三層（算式鷹架）：50 元每 9 元買 1 本，用去 45 元買了 <b>5</b> 本，剩下的 5 元不夠 9 元買 1 本（捨去不計），所以最多只可買 <b>？</b> 本（就是商）。',
+    diagnoseVal: (v) => {
+      if (v === 6) return '🎯 錯因診斷：買 6 本故事書需要 9 × 6 ＝ 54 元，但小華只有 50 元，剩下的 5 元唔夠 9 元買第 6 本書呀！';
+      if (v === 10) return '🎯 錯因診斷：5 本書加餘下 5 元唔可以加埋一齊（5 ＋ 5 ＝ 10）㗎！「本」同「元」單位唔同，而且餘下 5 元買唔到書！';
+      if (v === 4) return '🎯 錯因診斷：如果只買 4 本書（9 × 4 ＝ 36 元），仲剩低 14 元，14 元仲夠買多 1 本 9 元嘅故事書喎！請打開「📖 九因歌幫手」看看！';
+      return null;
+    }
+  },
+  {
+    id: 'c3',
+    text: '挑戰 3：有波子 45 粒，平均放進 6 個袋子裏，把剩餘的波子再放進其中一個袋子內，這個袋子共有波子多少粒？',
+    keywords: ['平均放進 6 個袋子', '剩餘的波子再放進其中一個袋子內', '這個袋子共有'],
+    total: 45,
+    divisor: 6,
+    quotient: 7,
+    rem: 3,
+    svgId: 'marble',
+    itemName: '波子',
+    groupLabel: '號袋',
+    handling: 'qr+',
+    ans: 10,
+    unit: '粒',
+    hintL1: '🌱 第一層（審題關鍵字提問）：請看題目黃色螢光筆字眼——先把波子平均放進 6 個袋子，然後把「剩餘的波子再放進其中一個袋子內」。咁呢個袋子入面會有原本分得嘅波子，再加上邊啲波子呢？',
+    hintL2: '🌿 第二層（引導觀察模擬器）：請看上方模擬器，每個袋子原本平均分得幾多粒（商）？紅框剩餘幾多粒（餘數）？請點擊模擬器的「📥 把餘數放進第 1 個袋子」再數數第 1 號袋共有幾粒！',
+    scaffoldL3: '🌳 第三層（算式鷹架）：每個袋子原本分得 <b>7</b> 粒（商），再把剩餘的 <b>3</b> 粒（餘數）放進這個袋子，共有：<b>7 ＋ 3 ＝ ？</b> 粒。',
+    diagnoseVal: (v) => {
+      if (v === 7) return '🎯 錯因診斷：7 粒只是每個袋子「最初平均分得」的數量（商），別忘了題目說「把剩餘的 3 粒波子再放進其中一個袋子內」呀！';
+      if (v === 8) return '🎯 錯因診斷：題目問的是「這個袋子共有波子多少粒」，唔係問要幾多個袋子（唔係 7 ＋ 1 呀）！剩餘有 3 粒波子放咗入去喎！';
+      if (v === 3) return '🎯 錯因診斷：3 粒只是「剩餘的波子」，還要加上這個袋子原本已經分得的波子數量呀！';
+      return null;
+    }
+  },
+  {
+    id: 'c4',
+    text: '挑戰 4：花店有玫瑰花 38 枝，每 8 枝紮成一束，要把所有玫瑰花紮成花束出售，尚欠玫瑰花多少枝？',
+    keywords: ['每 8 枝紮成一束', '所有玫瑰花紮成花束', '尚欠玫瑰花多少枝'],
+    total: 38,
+    divisor: 8,
+    quotient: 4,
+    rem: 6,
+    svgId: 'rose',
+    itemName: '玫瑰花',
+    groupLabel: '束',
+    handling: 'dr',
+    ans: 2,
+    unit: '枝',
+    hintL1: '🌱 第一層（審題關鍵字提問）：請看題目黃色螢光筆字眼——「每 8 枝紮成一束」，問「尚欠玫瑰花多少枝」。紮完幾束之後，最後剩低嗰幾枝花，仲差幾多枝先湊夠 8 枝紮成新一束呀？',
+    hintL2: '🌿 第二層（引導觀察模擬器）：請在上方模擬器點擊「🔍 數數最後一束還欠多少」，睇下最後一束已經有餘下嘅幾枝花？仲有幾多個灰色虛線空位未填滿？',
+    scaffoldL3: '🌳 第三層（算式鷹架）：每束需要 <b>8</b> 枝（除數），最後一束只有餘下的 <b>6</b> 枝（餘數），所以尚欠：<b>8 － 6 ＝ ？</b> 枝。',
+    diagnoseVal: (v) => {
+      if (v === 6) return '🎯 錯因診斷：6 枝是「最後餘下已有的玫瑰花」（餘數），但一束要 8 枝，已有 6 枝，題目問「尚欠多少枝」才湊夠 8 枝喔！';
+      if (v === 4) return '🎯 錯因診斷：4 是已經紮好的 4 束花（商），但題目問的是最後未滿一束的花「尚欠玫瑰花多少枝」喔！';
+      if (v === 5) return '🎯 錯因診斷：5 是總共可以紮成的花束數量（4 ＋ 1），但題目最後一句問的是「尚欠玫瑰花多少枝」呀！';
+      return null;
+    }
+  }
+];
+
+const H_OPTS=[['qr','「商」及「餘數」'],['q','只要「商」'],['q1','「商」+1'],['qr+','「商」+「餘數」'],['dr','「除數」-「餘數」']];
+
+/* ================== 狀態與輔助計算函式 ================== */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const NQ=QUESTIONS.length;
+const S={
+  cls:null,no:null,cur:0,kw:false,showTimes:false,
+  focusLink:null,
+  remTooBigVal:null,
+  sims:[],ans:[],res:[],
+  // 小挑戰每題獨立狀態：
+  // hintLevel: 0(未開) | 1(第一層審題) | 2(第二層模擬器引導) | 3(第三層挖空算式)
+  // simStage: 0(未分) | 1(已分出商與餘數，等待學生揀點處理) | 2(學生已選擇處理動作)
+  // userRemAction: null | 'addBox' | 'putInFirst' | 'countOwe' | 'ignoreRem'
+  chAns:CHALLENGE_QS.map(()=>({
+    h:'', val:'',
+    hintLevel:0,
+    attempts:0,
+    simStage:0,
+    userRemAction:null,
+    showTimes:false,
+    feedbackHtml:''
+  })),
+  chPassed:false
+};
+let busy=false, autoRunning=false, FLY=480, coinSwipeActive=false;
+const D=q=>q.mode==='share'?q.n:q.size;
+const QT=q=>Math.floor(q.total/D(q)), RM=q=>q.total%D(q);
+function finalAns(q){ const qt=QT(q),r=RM(q),d=D(q); return {qr:[qt,r],q:[qt],q1:[qt+1],'qr+':[qt+r],dr:[d-r]}[q.handling]; }
+const cq=()=>QUESTIONS[S.cur], cs=()=>S.sims[S.cur];
+const remain=s=>s.rods*10+s.loose;
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const center=el=>{const r=el.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2};};
+
+function startTip(q){
+  if(q.mode==='coinCircle') return `👆 請在上方點選或用手指滑過 5 個「$1」金幣圈起來（或按「⭕ 5元圈一圈」），下方分物區就會動態出現 1 枝藍紅原子筆！`;
+  if(q.mode==='manualBox') return `👆 請點選上方「${q.itemName}」飛入下方真實${q.boxName}；裝滿 ${q.size} ${q.unit}後，請按分物區內的「➕ 新增${q.boxName}」！`;
+  return `👆 點擊上方「${q.packName}」爆開成 10 個一，再點選或拖曳物品飛入下方容器！`;
+}
+
+function newSim(q){
+  if(q.mode==='coinCircle'){
+    return {
+      rods:0, loose:q.total, selectedCoins:[], circledBundles:0,
+      given:[], manual:0, done:false, left:0, handled:false,
+      last:null, newRod:false, burstFrom:null, burstN:0, flyFrom:null, allPop:false, celebrate:false,
+      msg:startTip(q)
+    };
+  }
+  if(q.mode==='manualBox'){
+    return {
+      rods:0, loose:q.total,
+      given:[0],
+      manual:0, done:false, left:0, handled:false,
+      last:null, newRod:false, burstFrom:null, burstN:0, flyFrom:null, allPop:false, celebrate:false,
+      msg:startTip(q)
+    };
+  }
+  return {
+    rods:Math.floor(q.total/10), loose:q.total%10,
+    given:Array(q.n).fill(0),
+    manual:0, done:false, left:0, handled:false,
+    last:null, newRod:false, burstFrom:null, burstN:0, flyFrom:null, allPop:false, celebrate:false,
+    msg:startTip(q)
+  };
+}
+QUESTIONS.forEach((q,i)=>{S.sims[i]=newSim(q);S.ans[i]={};S.res[i]=null;});
+
+function obj(id,cls='',size,extraAttr=''){
+  return `<span class="o ${cls}"${size?` style="--s:${size}px"`:''} ${extraAttr}><svg viewBox="0 0 64 64"><use href="#${id}"/></svg></span>`;
+}
+function objs(n,id,popLast,size,cls=''){
+  let h='';
+  for(let i=0;i<n;i++) h+=obj(id,cls+(popLast&&i===n-1?' pop':''),size);
+  return h;
+}
+function packHTML(q,isNew){
+  return `<div class="pack${isNew?' newPack':''}"><div class="tube ${q.packCls}">${objs(10,q.item,false,20)}</div>
+  <small>🔟 ${q.packName}</small><b>👆 點我拆開</b></div>`;
+}
+
+(function(){
+  const ids=['candy','coin','egg','pingpong','orange','pen'];
+  $('#hero').innerHTML=ids.map((id,i)=>obj(id,'',52,`style="animation-delay:${i*0.25}s"`)).join('');
+})();
+
+/* 視覺粒子特效：💥 拆十爆裂、✨⭐ 飛入星光（完全無音效） */
+function fx(x,y,txt,kf,opt){
+  const d=document.createElement('div'); d.className='fx'; d.textContent=txt;
+  d.style.left=x-14+'px'; d.style.top=y-14+'px'; document.body.appendChild(d);
+  d.animate(kf,opt).onfinish=()=>d.remove();
+}
+function sparkle(x,y){
+  for(let i=0;i<6;i++){
+    const a=Math.PI*2*i/6, r=28+Math.random()*16;
+    fx(x,y,i%2?'✨':'⭐',[
+      {transform:'scale(.2)',opacity:1},
+      {transform:`translate(${Math.cos(a)*r}px,${Math.sin(a)*r}px) scale(1.05) rotate(180deg)`,opacity:0}
+    ],{duration:520,easing:'ease-out'});
+  }
+}
+function boom(p){
+  fx(p.x,p.y,'💥',[
+    {transform:'scale(.2)',opacity:1},
+    {transform:'scale(2.8)',opacity:.9,offset:.4},
+    {transform:'scale(3.6)',opacity:0}
+  ],{duration:560});
+}
+function starBurst(p){
+  const e=['⭐','🌟','✨','🎉'];
+  for(let i=0;i<14;i++){
+    const a=Math.PI*2*i/14, r=95+Math.random()*70;
+    fx(p.x,p.y,e[i%4],[
+      {transform:'perspective(500px) translateZ(0) scale(.3)',opacity:1},
+      {transform:`perspective(500px) translate3d(${Math.cos(a)*r}px,${Math.sin(a)*r}px,110px) rotateY(360deg) scale(1.3)`,opacity:0}
+    ],{duration:980,easing:'cubic-bezier(.2,.8,.3,1)'});
+  }
+}
+
+function speak(t){
+  if(!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t.replace(/<[^>]+>/g,''));
+  u.lang='zh-HK'; u.rate=.92;
+  speechSynthesis.speak(u);
+}
+function shake(el){
+  if(!el) return;
+  el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+}
+function setMsg(t){
+  cs().msg=t;
+  const m=$('#msg'); if(m) m.innerHTML=t;
+}
+
+/* ================== 登入與頂部導航 ================== */
+['3A','3B','3C','3D','3E'].forEach(c=>{
+  const b=document.createElement('button'); b.textContent=c;
+  b.onclick=()=>{S.cls=c; $$('#pickCls button').forEach(x=>x.classList.toggle('on',x===b)); loginCheck();};
+  $('#pickCls').appendChild(b);
+});
+for(let i=1;i<=28;i++){
+  const b=document.createElement('button'); b.textContent=i;
+  b.onclick=()=>{S.no=i; $$('#pickNo button').forEach(x=>x.classList.toggle('on',x===b)); loginCheck();};
+  $('#pickNo').appendChild(b);
+}
+function loginCheck(){
+  const ok=S.cls&&S.no;
+  $('#bStart').disabled=!ok;
+  $('#loginTip').textContent=ok?`你是 ${S.cls} 班 ${S.no} 號，準備好就開始吧！`:'請先點選班別和學號！';
+}
+$('#bStart').onclick=()=>{
+  $('#login').classList.add('hidden');
+  $('#app').classList.remove('hidden');
+  $('#who').textContent=`${S.cls} 班 (${S.no}號)`;
+  renderAll();
+};
+$('#bChange').onclick=e=>{
+  e.preventDefault();
+  $('#app').classList.add('hidden');
+  $('#login').classList.remove('hidden');
+};
+$('#bKw').onclick=()=>{ S.kw=!S.kw; renderQ(); };
+$('#bRead').onclick=()=>speak(cq().text);
+$('#bGoChallenge').onclick=()=>openChallengeView();
+$('#bBackWorksheet').onclick=()=>showWorksheetView();
+$('#bTeacher1').onclick=teacherLogin;
+$('#bTeacher2').onclick=teacherLogin;
+
+function showWorksheetView(){
+  $('#challengeView').classList.add('hidden');
+  $('#worksheetView').classList.remove('hidden');
+  renderTabs();
+}
+function openChallengeView(){
+  $('#worksheetView').classList.add('hidden');
+  $('#challengeView').classList.remove('hidden');
+  renderTabs(true);
+  renderChallengeList();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderAll(){
+  renderProgress(); renderTabs(); renderQ(); renderSim(); renderAns();
+}
+window.go = function(i){
+  if(busy||autoRunning) return;
+  showWorksheetView();
+  S.cur=i; S.focusLink=null; S.remTooBigVal=null;
+  renderAll();
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+function renderProgress(){
+  const doneCount=S.res.filter(r=>r&&r.score===CFG.PER_Q).length;
+  $('#prog').innerHTML=`課業完成：${doneCount} / ${NQ} 題`;
+  if(doneCount===NQ){
+    $('#bGoChallenge').textContent='🎉 進入小挑戰 (4題) 換表揚卡';
+    $('#bGoChallenge').className='btn green pulse';
+  }
+}
+function renderTabs(inChallenge=false){
+  let html = QUESTIONS.map((q,i)=>{
+    const isDone = S.res[i] && S.res[i].score===CFG.PER_Q;
+    return `<button class="tab ${!inChallenge&&i===S.cur?'on':''} ${isDone?'done':''}" onclick="go(${i})">${obj(q.item)} 第 ${i+1} 題 ${isDone?'⭐':''}</button>`;
+  }).join('');
+  html += `<button class="tab challenge-tab ${inChallenge?'on':''}" onclick="window.openChallengeTab()">🌟 小挑戰 (4題) 換表揚卡 ${S.chPassed?'🏆':''}</button>`;
+  $('#tabs').innerHTML = html;
+}
+window.openChallengeTab = openChallengeView;
+
+function renderQ(){
+  const q=cq(); let t=q.text;
+  if(S.kw) q.keywords.forEach(k=>t=t.split(k).join(`<mark>${k}</mark>`));
+  $('#qno').textContent=`第 ${S.cur+1} 題（共 5 題）｜ ${q.modeLabel}`;
+  $('#qtext').innerHTML=t;
+  $('#bKw').classList.toggle('on',S.kw);
+}
+
+/* ================== 分物區渲染 ================== */
+function slotsHTML(q,c,popLast,mode='',fillCls=''){
+  let h='';
+  for(let i=0;i<q.size;i++){
+    if(i<c) h+=`<span class="slot f">${obj(q.item,fillCls+(popLast&&i===c-1?' pop':''))}</span>`;
+    else if(mode==='owe') h+=`<span class="slot owe">${obj(q.item,'ghost')}</span>`;
+    else h+=`<span class="slot ${mode}">${mode==='x'?'✖':''}</span>`;
+  }
+  return h;
+}
+
+function liveHTML(q,s){
+  const rem=remain(s), qt=QT(q), r=RM(q), d=D(q);
+  if(s.done){
+    let t=`${q.total} ÷ ${d} ＝ 商 <b>${qt}</b> … 餘數 <b class="r">${r}</b>`;
+    if(s.handled){
+      t+='<br>'+{
+        qr:`每人分得 <b>${qt}</b> ${q.unit}，餘下 <b class="r">${r}</b> ${q.unit}`,
+        q:`餘下 ${r} 元不夠買 1 枝 ➔ 只要商：<b>${qt}</b> 枝`,
+        q1:`餘下 ${r} 隻也要 1 個雞蛋盒 ➔ ${qt} ＋ 1 ＝ <b>${qt+1}</b> 個`,
+        'qr+':`把餘下 ${r} 個放入籃子 1 ➔ ${qt} ＋ ${r} ＝ <b>${qt+r}</b> 個`,
+        dr:`第 9 個網袋有 ${r} 個，尚欠 ➔ ${d} － ${r} ＝ <b>${d-r}</b> 個`
+      }[q.handling];
+    }
+    return t;
+  }
+  if(q.mode==='coinCircle'){
+    const bCount = s.circledBundles || 0;
+    const selCount = (s.selectedCoins || []).length;
+    return bCount
+      ? `已圈了 <b>${bCount}</b> 圈（買了 <b>${bCount}</b> 枝原子筆，用去 ${bCount*5} 元），還剩 <b class="r">${s.loose}</b> 元`
+      : `請點選或滑過上方 <b>5</b> 個 $1 金幣圈成一圈（目前已選 <b>${selCount} / 5</b> 個）`;
+  }
+  if(q.mode==='manualBox'){
+    const fullCnt = s.given.filter(c=>c===q.size).length;
+    const totalIn = s.given.reduce((a,b)=>a+b,0);
+    return `分物區現有 <b>${s.given.length}</b> ${q.cWord}${q.boxName}（已裝滿 <b>${fullCnt}</b> ${q.cWord}，共放入 ${totalIn} ${q.unit}，還剩 <b class="r">${s.loose}</b> ${q.unit}）`;
+  }
+  if(q.mode==='share'){
+    const min=Math.min(...s.given), allEq=s.given.every(v=>v===min);
+    if(allEq&&min===0) return `每輪每${q.who}派 1 ${q.unit}，一輪共分出 ${q.n} ${q.unit}`;
+    if(allEq) return `已派發 <b>${min}</b> 輪：${q.n} × ${min} ＝ <b>${q.n*min}</b>，還剩 <b class="r">${rem}</b> ${q.unit}`;
+    return `第 <b>${min+1}</b> 輪派發中……還有 ${s.given.filter(v=>v===min).length} ${q.who}未分到`;
+  }
+  return '';
+}
+
+function renderSim(){
+  const q=cq(), s=cs(), rem=remain(s), nd=!s.done, u=D(q);
+  const box=$('#sim');
+  const hlClass = S.focusLink ? ` hl-${S.focusLink}` : '';
+  box.className='scene '+q.scene+hlClass;
+
+  let h=`<div class="zoneHeader"><span class="zoneTitleText">${q.supplyName}</span><span class="tag">還有 ${rem} ${q.unit}</span></div>`;
+  h+=`<div class="supply" id="supply">`;
+
+  if(q.mode==='coinCircle'){
+    for(let b=0;b<s.circledBundles;b++){
+      h+=`<div class="coin-bundle">${objs(5,'coin',false,26)}<span class="coin-bundle-tag">第 ${b+1} 圈 ($5)</span></div>`;
+    }
+    for(let i=0;i<s.loose;i++){
+      const selOrder = s.selectedCoins.indexOf(i);
+      const isSel = selOrder !== -1;
+      const badge = isSel ? `<span class="coin-badge-float">${selOrder+1}/5元</span>` : '';
+      h+=`<span class="o item${isSel?' coin-sel':''}" style="--s:38px" data-cidx="${i}">${badge}<svg viewBox="0 0 64 64"><use href="#coin"/></svg></span>`;
+    }
+    if(!s.loose) h+=`<span class="muted">全部金幣已分完 🎉</span>`;
+  } else {
+    for(let i=0;i<s.rods;i++) h+=packHTML(q,s.newRod&&i===s.rods-1);
+    for(let i=0;i<s.loose;i++) h+=obj(q.item,'item'+(i>=s.loose-s.burstN?' new':''),38);
+    if(!s.rods&&!s.loose) h+=`<span class="muted">${s.done?'分物完成 🎉':''}</span>`;
+  }
+  h+=`</div>`;
+
+  h+=`<div class="zoneHeader">
+    <span class="zoneTitleText">${q.targetTitle}</span>
+    ${q.mode==='manualBox' ? `
+      <div class="box-ctrl-inline">
+        <button class="btn warm" id="bAddBoxTop" ${nd?'':'disabled'}>➕ 新增${q.boxName}</button>
+        <button class="btn gray" id="bSubBoxTop" ${nd&&s.given.length>1?'':'disabled'}>➖ 減少${q.boxName}</button>
+      </div>
+    ` : ''}
+  </div>`;
+
+  h+=`<div class="targets" id="targets">`;
+
+  if(q.mode==='share'){
+    const min=Math.min(...s.given), allEq=s.given.every(v=>v===min), PS=q.n>5?20:24, bonus=s.handled&&q.handling==='qr+';
+    q.receivers.forEach((nm,i)=>{
+      const c=s.given[i], wait=nd&&!allEq&&c===min, b=bonus&&i===0;
+      if(q.id==='q4'){
+        h+=`<div class="target pingpong-basket-card${wait?' cur':''}${b?' bonus':''}${s.last===i?' jump':''}" data-idx="${i}">
+          <div class="nm">${i===0?'⭐ ':''}${nm}</div>
+          <div class="woven-basket">${objs(c,q.item,s.last===i,PS)}${b?objs(s.left,q.item,false,PS,'flyT'):''}</div>
+          <div class="cnt">${b?`${c} ＋ ${s.left} ＝ ${c+s.left}`:c} ${q.unit}</div>
+        </div>`;
+      } else {
+        h+=`<div class="target kid${wait?' cur':''}${b?' bonus':''}${s.last===i?' jump':''}" data-idx="${i}">
+          <div class="nm">${nm}</div>
+          <div class="plate">${objs(c,q.item,s.last===i,PS)}</div>
+          <div class="cnt">${c} ${q.unit}</div>
+        </div>`;
+      }
+    });
+  } else if(q.mode==='coinCircle'){
+    if(s.circledBundles===0){
+      h+=`<div style="width:100%;padding:22px 14px;text-align:center;background:rgba(255,255,255,.78);border:2.5px dashed #93c5fd;border-radius:16px;font-weight:900;color:#1e40af">
+        👆 請在上方點選或用手指滑過 5 個「$1」金幣圈成一圈（或按下方「⭕ 5元圈一圈」），這裏就會動態出現 1 枝藍紅原子筆！
+      </div>`;
+    } else {
+      for(let i=0;i<s.circledBundles;i++){
+        const isNewest = (s.last===i);
+        h+=`<div class="pen-card${isNewest?' pop':''}" data-idx="${i}">
+          ${obj('pen','',50)}
+          <div class="nm">第 ${i+1} 枝</div>
+          <span class="pen-price">5 元 ✅</span>
+        </div>`;
+      }
+    }
+    if(s.handled){
+      h+=`<div class="target" style="flex:0 0 auto;min-width:140px;border-color:var(--red);background:#fff1f2">
+        <div style="display:flex;justify-content:center;gap:4px;margin:8px 0">${slotsHTML(q,s.left,false,'x','flyT')}</div>
+        <div class="nm" style="color:var(--red)">${q.extraLabel}</div>
+      </div>`;
+    }
+  } else if(q.mode==='manualBox'){
+    const isEggCarton = (q.id==='q3');
+    s.given.forEach((c,i)=>{
+      const full = (c===q.size);
+      const isLastPartialAfterDone = s.done && c>0 && c<q.size;
+      const slotMode = (s.handled && isLastPartialAfterDone && q.handling==='dr') ? 'owe' : (s.handled && isLastPartialAfterDone && q.handling==='q1') ? 'need' : '';
+      const canQuickFill = nd && !full && s.loose > 0;
+
+      if(isEggCarton){
+        h+=`<div class="target egg-carton-box ${full?'full':isLastPartialAfterDone?'bonus':'cur'}${s.last===i?' jump':''}" data-idx="${i}">
+          <div class="egg-carton-lid">半打 6 格雞蛋盒</div>
+          <div class="slots">${slotsHTML(q,c,s.last===i,slotMode)}</div>
+          <div class="nm" style="color:#451a03;margin-top:5px">第 ${i+1} 盒 (${c}/6) ${full?'✅':''}</div>
+          ${canQuickFill?`<button type="button" class="btn quick-fill-btn" data-bidx="${i}">⚡ 裝入此盒</button>`:''}
+        </div>`;
+      } else {
+        h+=`<div class="target orange-bag-card ${full?'full':isLastPartialAfterDone?'bonus':'cur'}${s.last===i?' jump':''}" data-idx="${i}">
+          <div class="bag-handle"></div>
+          <div class="bag-knot"></div>
+          <div class="nm" style="color:#9a3412">第 ${i+1} 袋 (${c}/7) ${full?'✅':''}</div>
+          <div class="slots">${slotsHTML(q,c,s.last===i,slotMode)}</div>
+          ${canQuickFill?`<button type="button" class="btn quick-fill-btn" data-bidx="${i}">⚡ 裝入此袋</button>`:''}
+          ${s.handled && isLastPartialAfterDone && q.handling==='dr'?`<div class="oweTag">欠 ${q.size-c} 個</div>`:''}
+        </div>`;
+      }
+    });
+
+    if(nd){
+      h+=`<div class="add-box-card">
+        <button class="btn warm" id="bAddBoxInline">➕ 新增${q.boxName}</button>
+        <button class="btn gray" id="bSubBoxInline" ${s.given.length>1?'':'disabled'}>➖ 減少${q.boxName}</button>
+      </div>`;
+    }
+  }
+  h+=`</div>`;
+
+  h+=`<div class="zoneHeader"><span class="zoneTitleText">🔴 分物後發現的餘數</span></div>`;
+  h+=`<div class="leftover" id="leftover">`;
+  if(nd){
+    h+=`<span class="muted">當分完所有正數批次後，餘下的${q.itemName}會顯示在這裏</span>`;
+  } else if(!s.left){
+    h+=`<span class="muted">剛好分完，沒有餘數！</span>`;
+  } else if(s.handled&&q.leftMsg){
+    h+=`<span class="muted">${q.leftMsg(s.left,u)}</span>`;
+  } else {
+    h+=objs(s.left,q.item,false,40)+`<span class="remTag">餘數 ${s.left} ${q.unit}（點擊處理餘數）</span>`;
+  }
+  h+=`</div>`;
+
+  if(S.focusLink){
+    const linkTips = {
+      quotient: `🔗 【商 ＝ ${QT(q)}】代表分物區內「每份分得的數量」或「裝滿了多少盒／買了多少枝」（已為你用橙色外框高亮）！`,
+      product: `🔗 【乘積 ＝ ${D(q)} × ${QT(q)} ＝ ${D(q)*QT(q)}】代表已經分出去的物品總數（已為你高亮已分物品）！`,
+      remainder: `🔗 【餘數 ＝ ${RM(q)}】代表分完後不夠再平均分而剩下的物品（已為你用紅框高亮）！`
+    };
+    h+=`<div class="link-banner">${linkTips[S.focusLink]}</div>`;
+  }
+
+  if(S.remTooBigVal !== null && S.remTooBigVal >= u){
+    h+=`<div class="rem-err-banner">
+      ⚠️ <strong>餘數防呆提示：</strong>你填寫的餘數是 <b>${S.remTooBigVal}</b>，但除數是 <b>${u}</b>！<br>
+      如果還剩下 ${S.remTooBigVal} ${q.unit}，其實<strong>還夠再分多 ${Math.floor(S.remTooBigVal/u)} 份（每份 ${u} ${q.unit}）</strong>！記住：<strong>餘數一定要比除數（${u}）小</strong>！
+    </div>`;
+  }
+
+  h+=`<div class="live">${liveHTML(q,s)}</div>`;
+  h+=`<div class="guide-bar" id="msg">${s.msg}</div>`;
+
+  if(q.mode==='coinCircle'){
+    h+=`<div class="ctrl">
+      <button class="btn gray" id="bReset">🔄 重新分物</button>
+      <button class="btn" id="bCircle5" ${nd&&s.loose>=5?'':'disabled'}>⭕ 5元圈一圈（買下一枝筆）</button>
+      <button class="btn warm" id="bAll" ${nd?'':'disabled'}>✨ 一鍵完成分物</button>
+    </div>`;
+  } else if(q.mode==='manualBox'){
+    h+=`<div class="ctrl">
+      <button class="btn gray" id="bReset">🔄 重新分物</button>
+      <button class="btn" id="bFillCurBox" ${nd&&s.loose>0?'':'disabled'}>⚡ 自動裝入當前${q.boxName}</button>
+      <button class="btn warm" id="bAll" ${nd?'':'disabled'}>✨ 一鍵完成分物</button>
+    </div>`;
+  } else {
+    h+=`<div class="ctrl">
+      <button class="btn gray" id="bReset">🔄 重新分物</button>
+      <button class="btn warm" id="bSplit" ${nd&&s.rods?'':'disabled'}>🔨 拆開 1 條十位 (10 ➔ 10個1)</button>
+      <button class="btn" id="bFirst" ${nd?'':'disabled'}>⚡ 派發下一輪（每${q.who} 1 ${q.unit}）</button>
+      <button class="btn warm" id="bAll" ${nd?'':'disabled'}>✨ 一鍵完成分物</button>
+    </div>`;
+  }
+
+  if(s.done&&s.left&&!s.handled){
+    h+=`<div class="ctrl"><button class="btn red pulse" id="bHandle">💡 點擊試試處理餘下的 ${s.left} ${q.unit}${q.itemName}！</button></div>`;
+  }
+
+  box.innerHTML=h;
+
+  if(q.mode==='coinCircle'){
+    $$('#supply .item').forEach(el=>{
+      el.addEventListener('pointerdown', e=>{
+        e.preventDefault();
+        coinSwipeActive = true;
+        togglePickCoin(+el.dataset.cidx);
+      });
+      el.addEventListener('pointerenter', ()=>{
+        if(coinSwipeActive && !busy && !autoRunning){
+          const idx = +el.dataset.cidx;
+          if(!s.selectedCoins.includes(idx)) togglePickCoin(idx);
+        }
+      });
+    });
+    window.addEventListener('pointerup', ()=>{ coinSwipeActive = false; }, {once:true});
+    $('#bCircle5').onclick=circleFiveStep;
+  } else {
+    $$('#supply .pack').forEach(p=>p.onclick=()=>{ if(!autoRunning) doOpen(p); });
+    $$('#supply .item').forEach(bindDrag);
+  }
+
+  if(q.mode==='manualBox'){
+    if($('#bAddBoxTop')) $('#bAddBoxTop').onclick=addManualBox;
+    if($('#bSubBoxTop')) $('#bSubBoxTop').onclick=removeManualBox;
+    if($('#bAddBoxInline')) $('#bAddBoxInline').onclick=addManualBox;
+    if($('#bSubBoxInline')) $('#bSubBoxInline').onclick=removeManualBox;
+    $('#bFillCurBox').onclick=()=>fillSpecificManualBox();
+    $$('.quick-fill-btn').forEach(btn=>{
+      btn.onclick=(e)=>{ e.stopPropagation(); fillSpecificManualBox(+btn.dataset.bidx); };
+    });
+  }
+
+  if(q.mode==='share'){
+    $('#bSplit').onclick=()=>{ if(!autoRunning) doOpen(); };
+    $('#bFirst').onclick=autoFirst;
+  }
+
+  $$('#leftover .o').forEach(x=>x.onclick=()=>handleRem());
+  $('#bReset').onclick=()=>{ if(busy||autoRunning) return; S.sims[S.cur]=newSim(q); renderSim(); };
+  $('#bAll').onclick=instantAll;
+  if($('#bHandle')) $('#bHandle').onclick=handleRem;
+
+  runAnims(s);
+}
+
+/* ================== 3D 拋物線在空中翻轉飛入容器 + 💥 拆十爆裂飛散 + ✨⭐ 爆星光 ================== */
+function flyIn(el,from,delay){
+  const c=center(el), dx=from.x-c.x, dy=from.y-c.y;
+  el.animate([
+    {transform:`perspective(700px) translate3d(${dx}px,${dy}px,0) scale(.4) rotateY(0) rotate(0)`},
+    {transform:`perspective(700px) translate3d(${dx*.5}px,${dy*.5-110}px,180px) scale(1.45) rotateY(360deg) rotate(180deg)`,offset:.55},
+    {transform:'perspective(700px) translate3d(0,0,0) scale(1) rotateY(720deg) rotate(360deg)'}
+  ],{duration:800,delay,easing:'cubic-bezier(.3,.7,.3,1)',fill:'backwards'});
+}
+
+function runAnims(s){
+  if(s.burstFrom){
+    boom(s.burstFrom);
+    $$('#supply .item.new').forEach((el,i)=>flyIn(el,s.burstFrom,i*42));
+  }
+  if(s.flyFrom&&s.flyFrom.length){
+    $$('.flyT').forEach((el,i)=>flyIn(el,s.flyFrom[i]||s.flyFrom[0],220+i*100));
+  }
+  if(s.allPop){
+    $$('#targets .o').forEach((el,i)=>el.animate([
+      {transform:'perspective(400px) translateZ(150px) rotateY(180deg) scale(.2)'},
+      {transform:'none'}
+    ],{duration:560,delay:Math.min(i*14,800),fill:'backwards',easing:'ease-out'}));
+  }
+  if(s.celebrate&&$('#targets')) starBurst(center($('#targets')));
+  Object.assign(s,{burstFrom:null,burstN:0,flyFrom:null,allPop:false,celebrate:false,newRod:false,last:null});
+}
+
+function fly(src,dst,id,dur=FLY){
+  return new Promise(res=>{
+    if(!src||!dst){ res(); return; }
+    const a=center(src), b=center(dst), g=document.createElement('div');
+    g.className='flyer';
+    g.innerHTML=obj(id,'',46);
+    g.style.left=a.x-23+'px'; g.style.top=a.y-23+'px';
+    document.body.appendChild(g);
+    src.style.visibility='hidden';
+
+    const dx=b.x-a.x, dy=b.y-a.y, lift=Math.min(165, 68+Math.abs(dx)*.28);
+    g.animate([
+      {transform:'perspective(700px) translate3d(0,0,0) rotateY(0) rotate(0) scale(1)'},
+      {transform:`perspective(700px) translate3d(${dx*.5}px,${dy*.5-lift}px,160px) rotateY(360deg) rotate(160deg) scale(1.55)`,offset:.5},
+      {transform:`perspective(700px) translate3d(${dx}px,${dy}px,0) rotateY(720deg) rotate(360deg) scale(.65)`}
+    ],{duration:dur,easing:'ease-in-out'}).onfinish=()=>{
+      g.remove();
+      sparkle(b.x,b.y);
+      res();
+    };
+  });
+}
+
+async function togglePickCoin(cidx){
+  const q=cq(), s=cs();
+  if(busy||autoRunning||s.done) return;
+  const pos = s.selectedCoins.indexOf(cidx);
+  if(pos !== -1){
+    s.selectedCoins.splice(pos,1);
+    setMsg(`已取消選擇，目前已點選 ${s.selectedCoins.length} / 5 個 $1 金幣。`);
+    renderSim();
+    return;
+  }
+  s.selectedCoins.push(cidx);
+
+  if(s.selectedCoins.length === 5){
+    busy = true;
+    renderSim();
+    await sleep(180);
+    s.selectedCoins = [];
+    s.loose -= 5;
+    s.circledBundles++;
+    s.last = s.circledBundles - 1;
+    s.manual += 5;
+    if(s.loose < 5){
+      finish(q,s);
+    } else {
+      setMsg(`⭕ 已把 5 個 $1 圈成一圈，下方動態出現第 ${s.circledBundles} 枝藍紅原子筆！（5 × ${s.circledBundles} ＝ ${s.circledBundles*5} 元）`);
+    }
+    busy = false;
+    renderSim();
+    const newPen = $(`.pen-card[data-idx="${s.circledBundles-1}"]`);
+    if(newPen) sparkle(center(newPen).x, center(newPen).y);
+  } else {
+    setMsg(`已點選 ${s.selectedCoins.length} / 5 個 $1 金幣（再點選 ${5 - s.selectedCoins.length} 個即可圈成 5 元買 1 枝筆）！`);
+    renderSim();
+  }
+}
+
+async function circleFiveStep(){
+  const q=cq(), s=cs();
+  if(busy||autoRunning||s.done||s.loose<5) return;
+  busy = true;
+  s.selectedCoins = [0,1,2,3,4];
+  renderSim();
+  await sleep(240);
+  s.selectedCoins = [];
+  s.loose -= 5;
+  s.circledBundles++;
+  s.last = s.circledBundles - 1;
+  s.manual += 5;
+  if(s.loose < 5){
+    finish(q,s);
+  } else {
+    setMsg(`⭕ 已圈出第 ${s.circledBundles} 個「5元」，下方動態出現第 ${s.circledBundles} 枝原子筆！還剩 ${s.loose} 元。`);
+  }
+  busy = false;
+  renderSim();
+  const newPen = $(`.pen-card[data-idx="${s.circledBundles-1}"]`);
+  if(newPen) sparkle(center(newPen).x, center(newPen).y);
+}
+
+function addManualBox(){
+  const q=cq(), s=cs();
+  if(busy||autoRunning||s.done) return;
+  const maxAllowed = QT(q) + 1;
+  if(s.given.length >= maxAllowed){
+    setMsg(`已經有 ${s.given.length} ${q.cWord}${q.boxName}，足夠擺放所有${q.itemName}了！`);
+    return;
+  }
+  s.given.push(0);
+  setMsg(`➕ 已在分物區新增「第 ${s.given.length} ${q.cWord}${q.boxName}」，請點選上方${q.itemName}飛入！`);
+  renderSim();
+}
+
+function removeManualBox(){
+  const q=cq(), s=cs();
+  if(busy||autoRunning||s.done) return;
+  if(s.given.length <= 1){
+    setMsg(`最少要保留 1 ${q.cWord}${q.boxName}喔！`);
+    return;
+  }
+  const returned = s.given.pop();
+  s.loose += returned;
+  setMsg(`➖ 已減少 1 ${q.cWord}${q.boxName}（退回 ${returned} ${q.unit}${q.itemName}到待分區）。`);
+  renderSim();
+}
+
+async function fillSpecificManualBox(targetBoxIdx=null){
+  const q=cq(), s=cs();
+  if(busy||autoRunning||s.done||s.loose<=0) return;
+  let openIdx = targetBoxIdx !== null ? targetBoxIdx : s.given.findIndex(c => c < q.size);
+  if(openIdx === -1 || s.given[openIdx] >= q.size){
+    setMsg(`現有的 ${s.given.length} ${q.cWord}${q.boxName}已裝滿 ${q.size} ${q.unit}！請先按分物區的「➕ 新增${q.boxName}」！`);
+    shake($('#bAddBoxInline')||$('#bAddBoxTop')); return;
+  }
+  autoRunning = true;
+  FLY = 220;
+  while(!s.done && s.loose > 0 && s.given[openIdx] < q.size){
+    const it = $$('#supply .item').pop();
+    if(!it) break;
+    await give(openIdx, it, true);
+  }
+  FLY = 480;
+  autoRunning = false;
+  renderSim();
+}
+
+function bindDrag(el){
+  el.addEventListener('pointerdown',e=>{
+    if(busy||autoRunning) return; e.preventDefault();
+    const sx=e.clientX, sy=e.clientY; let ghost=null; el.setPointerCapture(e.pointerId);
+    const clearHover=()=>$$('.target.hover').forEach(t=>t.classList.remove('hover'));
+    const mv=ev=>{
+      if(!ghost&&Math.hypot(ev.clientX-sx,ev.clientY-sy)>8){
+        ghost=document.createElement('div'); ghost.className='flyer drag';
+        ghost.innerHTML=obj(cq().item,'',52); document.body.appendChild(ghost); el.classList.add('ghosted');
+      }
+      if(ghost){
+        ghost.style.left=ev.clientX-26+'px'; ghost.style.top=ev.clientY-26+'px'; clearHover();
+        const t=document.elementFromPoint(ev.clientX,ev.clientY)?.closest('.target[data-idx]'); if(t) t.classList.add('hover');
+      }
+    };
+    const up=ev=>{
+      el.removeEventListener('pointermove',mv); el.removeEventListener('pointerup',up); el.removeEventListener('pointercancel',up);
+      if(!ghost){ give(null,el); return; }
+      ghost.remove(); el.classList.remove('ghosted'); clearHover();
+      const t=document.elementFromPoint(ev.clientX,ev.clientY)?.closest('.target[data-idx]');
+      if(t) give(+t.dataset.idx,null);
+    };
+    el.addEventListener('pointermove',mv); el.addEventListener('pointerup',up); el.addEventListener('pointercancel',up);
+  });
+}
+
+function doOpen(el){
+  const q=cq(), s=cs(); if(busy||s.done||!s.rods) return false;
+  el=el||$('#supply .pack');
+  s.burstFrom=el?center(el):null; s.rods--; s.loose+=10; s.burstN=10;
+  setMsg(`💥 拆開${q.packName}：1 個十 ➔ 10 個一！現在有 ${s.loose} ${q.unit}散裝${q.itemName}可以分。`);
+  renderSim(); return true;
+}
+
+function canGive(q,s,idx){
+  const rem=remain(s);
+  const needOpen={ok:false,msg:`散裝${q.itemName}已分完，請點擊上方「${q.packName}」拆開成 10 個一！`,shakeRod:true};
+
+  if(q.mode==='share'){
+    const min=Math.min(...s.given), allEq=s.given.every(v=>v===min);
+    if(allEq&&rem<q.n) return {ok:false,msg:`剩下的不夠每${q.who}再分 1 ${q.unit}，這些就是餘數。`};
+    if(s.loose===0) return needOpen;
+    const t=idx==null?s.given.indexOf(min):idx;
+    if(s.given[t]>min) return {ok:false,msg:`要平均分配，請先分給數量較少的${q.who}！`,shake:t};
+    return {ok:true,target:t};
+  }
+
+  if(q.mode==='manualBox'){
+    const openIdx = s.given.findIndex(c => c < q.size);
+    if(idx != null){
+      if(s.given[idx] >= q.size){
+        return {ok:false,msg:`第 ${idx+1} ${q.cWord}${q.boxName}已裝滿 ${q.size} ${q.unit}！請按分物區內的「➕ 新增${q.boxName}」！`,shake:idx};
+      }
+      return {ok:true,target:idx};
+    }
+    if(openIdx === -1){
+      return {ok:false,msg:`現有的${q.boxName}已裝滿 ${q.size} ${q.unit}！請按分物區內的「➕ 新增${q.boxName}」繼續裝！`,shakeAddBtn:true};
+    }
+    return {ok:true,target:openIdx};
+  }
+  return {ok:false,msg:''};
+}
+
+async function give(idx,src,isAuto){
+  const q=cq(), s=cs(); if(busy||s.done) return false;
+  const c=canGive(q,s,idx);
+  if(!c.ok){
+    setMsg(c.msg);
+    if(c.shake!=null) shake($(`.target[data-idx="${c.shake}"]`));
+    if(c.shakeRod) shake($('#supply .pack'));
+    if(c.shakeAddBtn) shake($('#bAddBoxInline')||$('#bAddBoxTop'));
+    return false;
+  }
+  busy=true;
+  if(src){
+    const t=$(`.target[data-idx="${c.target}"]`);
+    await fly(src,t?(t.querySelector('.plate,.woven-basket,.slots')||t):$('#sim'),q.item);
+  }
+  s.given[c.target]++; s.loose--; s.last=c.target;
+  if(!isAuto) s.manual++;
+  busy=false;
+  afterGive(q,s); renderSim(); return true;
+}
+
+function afterGive(q,s){
+  const rem=remain(s);
+  const openTip=s.loose===0&&s.rods?`（散裝已用完，請點擊拆開${q.packName}）`:'';
+  if(q.mode==='share'){
+    const k=s.given[0], allEq=s.given.every(v=>v===k);
+    if(allEq){
+      if(rem<q.n) return finish(q,s);
+      setMsg(`第 ${k} 輪分完：每${q.who}得 ${k} ${q.unit}（${q.n} × ${k} ＝ ${q.n*k}）。`+openTip);
+    } else if(openTip){
+      setMsg(openTip);
+    } else {
+      setMsg(`繼續分！請把本輪餘下的派給尚未分到的${q.who}（橙色框）。`);
+    }
+    return;
+  }
+
+  if(q.mode==='manualBox'){
+    const fullCnt = s.given.filter(c=>c===q.size).length;
+    const qt = QT(q);
+    if(s.loose === 0){
+      s.done = true;
+      s.left = RM(q);
+      s.handled = true;
+      s.celebrate = true;
+      setMsg(q.handleMsg(qt, s.left, D(q)));
+      return;
+    }
+    if(fullCnt === qt && s.loose === RM(q) && s.given.length === qt){
+      return finish(q,s);
+    }
+    const lastIdx = s.last ?? (s.given.length-1);
+    const curC = s.given[lastIdx];
+    if(curC === q.size){
+      setMsg(`第 ${lastIdx+1} ${q.cWord}${q.boxName}已裝滿 ${q.size} ${q.unit}（${q.size} × ${fullCnt} ＝ ${q.size*fullCnt}）！請按分物區內的「➕ 新增${q.boxName}」繼續裝！`);
+    } else {
+      setMsg(`第 ${lastIdx+1} ${q.cWord}${q.boxName}已有 ${curC} ${q.unit}，還可放 ${q.size-curC} ${q.unit}。`);
+    }
+  }
+}
+
+function finish(q,s){
+  s.done=true; s.left=s.loose; s.loose=0; s.celebrate=true;
+  const qt=QT(q), r=RM(q);
+  if(q.mode==='share'){
+    setMsg(`🎉 分物完成：每${q.who}分得 ${qt} ${q.unit}，發現餘下 ${r} ${q.unit}！請點擊紅框餘數物品看看怎樣處理餘數！`);
+  } else if(q.mode==='coinCircle'){
+    setMsg(`🎉 已圈完 8 圈（買了 ${qt} 枝原子筆），發現餘下 ${r} 元（不夠 5 元買 1 枝筆）！請點擊紅框金幣看看怎樣處理餘數！`);
+  } else {
+    setMsg(`🎉 已裝滿 ${qt} ${q.cWord}${q.boxName}（共 ${qt*q.size} ${q.unit}），發現還剩 ${r} ${q.unit}${q.itemName}！請點擊下方紅色按鈕新增第 ${qt+1} ${q.cWord}${q.boxName}裝起牠們！`);
+  }
+}
+
+function handleRem(){
+  const q=cq(), s=cs(); if(!s.done||s.handled||!s.left||busy) return;
+  if(q.handling!=='qr') s.flyFrom=$$('#leftover .o').map(center);
+  if(q.mode==='manualBox' && s.given.length === QT(q)){
+    s.given.push(s.left);
+  }
+  s.handled=true;
+  setMsg(q.handleMsg(QT(q),s.left,D(q)));
+  renderSim();
+}
+
+async function autoStep(){
+  const s=cs(); if(s.done) return false;
+  if(s.loose===0){ if(!s.rods) return false; doOpen(); await sleep(720); }
+  const it=$$('#supply .item').pop(); if(!it) return false;
+  return await give(null,it,true);
+}
+async function autoFirst(){
+  if(busy||autoRunning) return; autoRunning=true; const q=cq(), s=cs();
+  if(s.rods&&s.loose<D(q)){ doOpen(); await sleep(720); }
+  for(let i=0;i<q.n;i++){
+    if(!await autoStep()) break;
+    if(s.done||s.given.every(v=>v===s.given[0])) break;
+  }
+  autoRunning=false; renderSim();
+}
+function instantAll(){
+  const q=cq(), s=cs(); if(busy||autoRunning||s.done) return;
+  const qt=QT(q), r=RM(q);
+  s.rods=0; s.loose=r;
+  if(q.mode==='coinCircle'){
+    s.selectedCoins=[];
+    s.circledBundles=qt;
+  } else if(q.mode==='manualBox'){
+    s.given=Array(qt).fill(q.size);
+  } else {
+    s.given=Array(q.n).fill(qt);
+  }
+  s.allPop=true;
+  finish(q,s); renderSim();
+}
+
+/* ================== 右側課業作答區 ================== */
+function inp(k){
+  const v=S.ans[S.cur][k]??'';
+  return `<input class="num" data-k="${k}" inputmode="numeric" maxlength="3" autocomplete="off" value="${v}" placeholder="?">`;
+}
+
+function renderAns(){
+  const q=cq(), a=S.ans[S.cur], dv=D(q), qt=QT(q);
+  const hEq={
+    qr:'<span class="muted">直接寫出「商」和「餘數」就可以，不用另列算式 👍</span>',
+    q:`只要商：${inp('y')}`,
+    q1:`${inp('x')} ＋ 1 ＝ ${inp('y')}`,
+    'qr+':`${inp('x')} ＋ ${inp('y')} ＝ ${inp('z')}`,
+    dr:`${inp('x')} － ${inp('y')} ＝ ${inp('z')}`
+  }[a.h] || '<span class="muted">請先在上方勾選「答題處理」方法</span>';
+
+  let sent='';
+  q.sentence.forEach((p,i)=>{ sent+=p; if(i<q.sentence.length-1) sent+=inp('s'+i); });
+
+  const times=[...Array(9)].map((_,i)=>{
+    const v=dv*(i+1);
+    const isBest = (i+1)===qt;
+    return `<span class="${v>q.total?'over':isBest?'best':''}">${dv} × ${i+1} = ${v}</span>`;
+  }).join('');
+
+  $('#ans').innerHTML=`
+  <div class="sec">
+    <h3>1. 答題處理（根據題意勾選）<span class="req">必選</span></h3>
+    <div class="opts">${H_OPTS.map(([k,t])=>
+      `<div class="opt ${a.h===k?'on':''}" data-h="${k}"><span class="box2">${a.h===k?'✓':''}</span><b>${t}</b></div>`
+    ).join('')}</div>
+  </div>
+
+  <div class="sec">
+    <h3>2. 列寫橫式和直式
+      <button class="btn gray" id="bTimes" style="font-size:13px;padding:4px 10px;min-height:32px;margin-left:auto">📖 九因歌提示</button>
+    </h3>
+    <div class="eqRow">【橫式】${inp('a')} ÷ ${inp('b')} ＝ ${inp('c')} … ${inp('e')}</div>
+    <div class="eqRow">【處理餘數算式】${hEq}</div>
+    <div class="eqRow" style="margin-top:6px">【直式】</div>
+    <div class="ldWrap">
+      <table class="ld">
+        <tr><td></td><td>${inp('v_q')}</td></tr>
+        <tr><td>${inp('v_d')}</td><td class="br">${q.total}</td></tr>
+        <tr><td></td><td>${inp('v_p')}</td></tr>
+        <tr><td></td><td class="line">${inp('v_r')}</td></tr>
+      </table>
+      <div class="times ${S.showTimes?'':'hidden'}" id="times">${times}</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3>3. 答句</h3>
+    <div class="sent">答：${sent}</div>
+  </div>
+
+  <div class="ctrl">
+    <button class="btn" id="bCheck">✅ 檢查本題答案</button>
+    <button class="btn gray" id="bClear">重填</button>
+    ${S.cur<NQ-1?'<button class="btn warm" id="bNext">下一題 ➜</button>':'<button class="btn green" id="bToCh">🌟 進入 4 題小挑戰 ➜</button>'}
+  </div>
+  <div id="fb">${S.res[S.cur]?S.res[S.cur].html:'<div class="fb info">💡 請先在左方分物區體驗 3D 分物，再填寫上方算式與答句！</div>'}</div>`;
+
+  $$('#ans .opt').forEach(o=>o.onclick=()=>{ a.h=o.dataset.h; renderAns(); });
+  $$('#ans input.num').forEach(i=>{
+    const k = i.dataset.k;
+    i.onfocus=()=>{
+      if(k==='c'||k==='v_q'||k==='y'||k==='x') S.focusLink='quotient';
+      else if(k==='v_p') S.focusLink='product';
+      else if(k==='e'||k==='v_r') S.focusLink='remainder';
+      else S.focusLink=null;
+      renderSim();
+    };
+    i.onblur=()=>{
+      if(S.focusLink){ S.focusLink=null; renderSim(); }
+    };
+    i.oninput=()=>{
+      i.value=i.value.replace(/\D/g,'');
+      a[k]=i.value;
+      i.classList.remove('ok','bad');
+      if(k==='e'||k==='v_r'){
+        const valNum = i.value==='' ? NaN : Number(i.value);
+        S.remTooBigVal = (!isNaN(valNum) && valNum >= dv) ? valNum : null;
+        renderSim();
+      }
+    };
+  });
+  $('#bTimes').onclick=()=>{ S.showTimes=!S.showTimes; $('#times').classList.toggle('hidden'); };
+  $('#bCheck').onclick=check;
+  $('#bClear').onclick=()=>{ S.ans[S.cur]={}; S.res[S.cur]=null; S.remTooBigVal=null; renderAns(); renderSim(); renderProgress(); renderTabs(); };
+  if($('#bNext')) $('#bNext').onclick=()=>go(S.cur+1);
+  if($('#bToCh')) $('#bToCh').onclick=()=>openChallengeView();
+
+  const r=S.res[S.cur];
+  if(r){
+    for(const k in r.marks){
+      const el=$(`#ans input[data-k="${k}"]`);
+      if(el) el.classList.add(r.marks[k]?'ok':'bad');
+    }
+  }
+}
+
+function check(){
+  const q=cq(), a=S.ans[S.cur], s=cs(), dv=D(q), qt=QT(q), r=RM(q), prod=dv*qt;
+  if(!s.done){
+    instantAll();
+  }
+  const blank=k=>a[k]===undefined||a[k]==='';
+  const n=k=>blank(k)?NaN:+a[k];
+  const m={}, chk=(k,v)=>(m[k]=n(k)===v);
+  let sc=0; const ok=[], bad=[], tips=[];
+
+  if(a.h===q.handling){ sc+=4; ok.push('答題處理'); }
+  else {
+    bad.push('答題處理'); tips.push(q.hTip);
+    S.kw = true; renderQ();
+  }
+
+  [['a',q.total],['b',dv],['c',qt],['e',r]].forEach(([k,v])=>chk(k,v));
+  if(m.a&&m.b&&m.c&&m.e){ sc+=4; ok.push('橫式'); }
+  else {
+    bad.push('橫式');
+    if(!m.b) tips.push(q.divTip);
+    if(!isNaN(n('e'))&&n('e')>=dv) tips.push(`餘數 ${n('e')} 不可大於或等於除數 ${dv}！`);
+    tips.push(`橫式應為：${q.total} ÷ ${dv} ＝ ${qt} … ${r}。`);
+  }
+
+  let heOk=(a.h===q.handling);
+  if(q.handling==='q'){ chk('y',qt); heOk=heOk&&m.y; }
+  if(q.handling==='q1'){ chk('x',qt); chk('y',qt+1); heOk=heOk&&m.x&&m.y; }
+  if(q.handling==='qr+'){ chk('x',qt); chk('y',r); chk('z',qt+r); heOk=heOk&&m.x&&m.y&&m.z; }
+  if(q.handling==='dr'){ chk('x',dv); chk('y',r); chk('z',dv-r); heOk=heOk&&m.x&&m.y&&m.z; }
+  if(heOk) sc+=4;
+  else {
+    bad.push('處理餘數算式');
+    tips.push({
+      qr:'請先勾選正確的答題處理方法。',
+      q:`買不到的不計算，答案只要商（${qt}）。`,
+      q1:`餘下的也要多用 1 個盒子，所以是「${qt} ＋ 1 ＝ ${qt+1}」。`,
+      'qr+':`籃子原有商（${qt}）個，再加上餘數（${r}）個，即「${qt} ＋ ${r} ＝ ${qt+r}」。`,
+      dr:`一袋要除數（${dv}）個，最後一袋已有餘數（${r}）個，尚欠「${dv} － ${r} ＝ ${dv-r}」個。`
+    }[q.handling]);
+  }
+
+  chk('v_q',qt); chk('v_d',dv); chk('v_p',prod); chk('v_r',r);
+  if(m.v_q && m.v_d && m.v_p && m.v_r){
+    sc+=4; ok.push('直式');
+  } else {
+    bad.push('直式');
+    tips.push(`直式提示：${q.total} ÷ ${dv}，商是 ${qt}，乘積是 ${dv} × ${qt} ＝ ${prod}，相減得餘數 ${q.total} － ${prod} ＝ ${r}。`);
+  }
+
+  const fa=finalAns(q); let sOk=true;
+  fa.forEach((v,i)=>{ if(!chk('s'+i,v)) sOk=false; });
+  if(sOk){ sc+=4; ok.push('答句'); }
+  else {
+    bad.push('答句');
+    tips.push(q.handling==='qr'?'答句要分別填寫「商（每人分得）」和「餘數（餘下）」。':'答句要填寫「處理餘數後」的最終答案。');
+  }
+
+  const full = (sc===CFG.PER_Q);
+  if(full && !s.handled) handleRem();
+  if(full) starBurst(center($('#bCheck')));
+
+  const html=`<div class="fb ${full?'good':'bad'}">
+    <b>本題得分：${sc} / ${CFG.PER_Q}　${'⭐'.repeat(Math.round(sc/CFG.PER_Q*3))}</b><br>
+    ${ok.length?'✅ 正確部分：'+ok.join('、')+'<br>':''}
+    ${bad.length?'❌ 需修正部分：'+bad.join('、')+'<br>':''}
+    ${[...new Set(tips)].map(t=>'💡 '+t).join('<br>')}
+    ${full?'🎉 全部正確，做得非常好！':''}
+  </div>`;
+
+  S.res[S.cur]={score:sc,errs:bad,marks:m,html};
+  renderAns(); renderProgress(); renderTabs();
+}
+
+/* =========================================================================
+   ====== 4 題小挑戰：5 大鷹架引導系統（絕不直接給答案） ======
+   1. 三層漸進式提示 (hintLevel 1 -> 2 -> 3)
+   2. 精準錯因診斷 (diagnoseVal)
+   3. 模擬器改為「學生動手揀點樣處理餘數」 (userRemAction)
+   4. 分離「答題處理」與「最終答案」的批改回饋
+   5. 內置「📖 九因歌幫手」試商條
+   ========================================================================= */
+function renderChallengeSimHTML(cqItem, st, idx){
+  if(st.simStage === 0){
+    return `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      ${objs(Math.min(cqItem.total, 12), cqItem.svgId, false, 28)}
+      <span class="muted">… 共有 <b>${cqItem.total}</b> 個（請點擊右上方「🔄 1. 模擬分物」開始分物，看看分成幾份、餘下多少！）</span>
+    </div>`;
+  }
+
+  // 已執行第 1 步分物：顯示商的各組（注意：標題與視覺絕不幫學生寫出最後加減答案！）
+  let groupsHtml = '';
+  for(let g=0; g<cqItem.quotient; g++){
+    const isPutInFirst = (st.userRemAction==='putInFirst' && g===0);
+    const countInGroup = isPutInFirst ? (cqItem.divisor + cqItem.rem) : cqItem.divisor;
+    groupsHtml += `<div class="ch-sim-group ${isPutInFirst?'extra-g':''}">
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:96px">
+        ${objs(Math.min(countInGroup, 6), cqItem.svgId, true, 22)}${countInGroup>6?`<b style="font-size:12px;color:#0369a1">×${countInGroup}</b>`:''}
+      </div>
+      <small style="font-weight:900;color:${isPutInFirst?'#e11d48':'#0369a1'};margin-top:3px">
+        第 ${g+1} ${cqItem.groupLabel}${isPutInFirst?` (原${cqItem.divisor}+餘${cqItem.rem})`:` (${cqItem.divisor})`}
+      </small>
+    </div>`;
+  }
+
+  // 根據學生自己選擇的餘數處理動作（userRemAction）呈現視覺變化，讓學生自己點算！
+  if(!st.userRemAction){
+    groupsHtml += `<div class="ch-sim-group extra-g">
+      <div style="display:flex;gap:2px">${objs(cqItem.rem, cqItem.svgId, true, 24)}</div>
+      <small style="font-weight:900;color:#e11d48;margin-top:3px">🔴 餘下 ${cqItem.rem} 個（請在下方揀點樣處理！）</small>
+    </div>`;
+  } else if(st.userRemAction === 'addBox'){
+    groupsHtml += `<div class="ch-sim-group extra-g">
+      <div style="display:flex;gap:2px">${objs(cqItem.rem, cqItem.svgId, true, 24)}</div>
+      <small style="font-weight:900;color:#15803d;margin-top:3px">➕ 新拿 1 ${cqItem.groupLabel} (裝起餘下 ${cqItem.rem} 個)</small>
+    </div>`;
+  } else if(st.userRemAction === 'ignoreRem'){
+    groupsHtml += `<div class="ch-sim-group extra-g" style="opacity:.6">
+      <div style="display:flex;gap:2px;filter:grayscale(1)">${objs(cqItem.rem, cqItem.svgId, false, 22)}</div>
+      <small style="font-weight:900;color:#64748b;margin-top:3px">✖ 餘下 ${cqItem.rem} 個唔夠再買/分（捨去不計）</small>
+    </div>`;
+  } else if(st.userRemAction === 'countOwe'){
+    const owe = cqItem.divisor - cqItem.rem;
+    groupsHtml += `<div class="ch-sim-group extra-g">
+      <div style="display:flex;align-items:center;gap:2px">
+        ${objs(cqItem.rem, cqItem.svgId, false, 22)}
+        ${objs(owe, cqItem.svgId, false, 22, 'ghost')}
+      </div>
+      <small style="font-weight:900;color:#e11d48;margin-top:3px">最後一${cqItem.groupLabel}已有 ${cqItem.rem} 個（數數灰色虛線欠幾個才滿 ${cqItem.divisor} 個？）</small>
+    </div>`;
+  }
+
+  return groupsHtml;
+}
+
+function renderChallengeList(){
+  const box = $('#challengeList');
+  box.innerHTML = CHALLENGE_QS.map((cqItem, idx)=>{
+    const st = S.chAns[idx];
+
+    // 第 1 點：若開啟了第 1 層或以上提示，自動將題目關鍵字加上黃色螢光筆
+    let qTextHtml = cqItem.text;
+    if(st.hintLevel >= 1){
+      cqItem.keywords.forEach(k=>{
+        qTextHtml = qTextHtml.split(k).join(`<mark>${k}</mark>`);
+      });
+    }
+
+    // 第 5 點：九因歌試商幫手條
+    const dv = cqItem.divisor;
+    const timesHtml = [...Array(9)].map((_,i)=>{
+      const v = dv*(i+1);
+      const isBest = (i+1)===cqItem.quotient;
+      return `<span class="${v>cqItem.total?'over':isBest?'best':''}">${dv} × ${i+1} = ${v}</span>`;
+    }).join('');
+
+    // 第 1 點：三層漸進式提示內容（依 st.hintLevel 逐步解鎖，絕不直接給答案）
+    let progressiveHintHtml = '';
+    if(st.hintLevel >= 1){
+      progressiveHintHtml += `<div class="ch-hint-box">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+          <span>🪜 <b>漸進式思考引導（第 ${st.hintLevel} / 3 層）</b></span>
+          ${st.hintLevel < 3 ? `<button type="button" class="btn warm ch-next-hint-btn" data-cidx="${idx}" style="font-size:12px;padding:3px 9px;min-height:28px">解鎖下一層提示 (${st.hintLevel+1}/3) ➜</button>` : ''}
+        </div>
+        <div class="ch-hint-step">${cqItem.hintL1}</div>
+        ${st.hintLevel >= 2 ? `<div class="ch-hint-step">${cqItem.hintL2}</div>` : ''}
+        ${st.hintLevel >= 3 ? `<div class="ch-scaffold-box">${cqItem.scaffoldL3}</div>` : ''}
+      </div>`;
+    }
+
+    // 第 3 點：當模擬器完成第一步分物（simStage >= 1）後，讓學生「自己揀點樣處理餘數」
+    const remActionBarHtml = st.simStage >= 1 ? `
+      <div class="ch-rem-actions">
+        <span style="font-size:13px;font-weight:900;color:#92400e">👆 第 2 步（請根據題意，自己點擊試試點樣處理紅框餘數）：</span>
+        <button type="button" class="btn ${st.userRemAction==='addBox'?'green':'gray'} ch-act-btn" data-cidx="${idx}" data-act="addBox">
+          ➕ 拿 1 個新容器裝起餘數
+        </button>
+        <button type="button" class="btn ${st.userRemAction==='putInFirst'?'green':'gray'} ch-act-btn" data-cidx="${idx}" data-act="putInFirst">
+          📥 把餘數放進第 1 個容器內
+        </button>
+        <button type="button" class="btn ${st.userRemAction==='ignoreRem'?'green':'gray'} ch-act-btn" data-cidx="${idx}" data-act="ignoreRem">
+          ✖ 餘數唔夠買/分（捨去不計）
+        </button>
+        <button type="button" class="btn ${st.userRemAction==='countOwe'?'green':'gray'} ch-act-btn" data-cidx="${idx}" data-act="countOwe">
+          🔍 數數最後一份還欠多少才滿
+        </button>
+      </div>
+    ` : '';
+
+    return `<div class="ch-card" id="chCard_${idx}">
+      <div class="ch-header">
+        <div class="ch-q">${qTextHtml}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button type="button" class="btn warm ch-tip-btn" data-cidx="${idx}" style="font-size:13px;padding:4px 10px;min-height:34px">
+            🪜 ${st.hintLevel===0?'開啟第 1 層提示':st.hintLevel<3?`第 ${st.hintLevel}/3 層提示 (點我進階)`:'已開全部 3 層提示'}
+          </button>
+          <button type="button" class="btn gray ch-times-btn" data-cidx="${idx}" style="font-size:13px;padding:4px 10px;min-height:34px">
+            📖 九因歌幫手 (${dv}的乘法)
+          </button>
+          <button type="button" class="btn ch-tts-btn" data-cidx="${idx}" style="font-size:13px;padding:4px 10px;min-height:34px">
+            🔊 讀題
+          </button>
+        </div>
+      </div>
+
+      ${st.showTimes ? `<div class="ch-times-bar"><b>✖️ ${dv} 的九因歌（找出最接近而不超過 ${cqItem.total} 的積）：</b>${timesHtml}</div>` : ''}
+
+      ${progressiveHintHtml}
+
+      <div class="ch-sim-box">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+          <span style="font-size:13.5px;font-weight:900;color:#0369a1">
+            🧪 互動分物模擬器 ${st.simStage>0 ? `（已分出 <b>${cqItem.quotient}</b> ${cqItem.groupLabel}，發現餘下 <b style="color:#e11d48">${cqItem.rem}</b> 個 — 請自己點算最終答案！）` : ''}
+          </span>
+          <div style="display:flex;gap:6px">
+            <button type="button" class="btn ch-sim-step1" data-cidx="${idx}" style="font-size:12.5px;padding:4px 10px;min-height:30px">
+              🔄 1. 模擬分物
+            </button>
+            ${st.simStage>0 ? `<button type="button" class="btn gray ch-sim-reset" data-cidx="${idx}" style="font-size:12px;padding:4px 8px;min-height:30px">重設</button>` : ''}
+          </div>
+        </div>
+        <div class="ch-sim-stage">${renderChallengeSimHTML(cqItem, st, idx)}</div>
+        ${remActionBarHtml}
+      </div>
+
+      <div class="ch-grid">
+        <div>
+          <div style="font-size:13.5px;font-weight:900;color:var(--muted);margin-bottom:5px">1. 選擇答題處理：</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            ${H_OPTS.map(([k,label])=>`
+              <button type="button" class="btn ${st.h===k?'':'gray'} ch-h-btn" data-cidx="${idx}" data-h="${k}" style="font-size:13px;padding:5px 11px;min-height:34px">${label}</button>
+            `).join('')}
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13.5px;font-weight:900;color:var(--muted);margin-bottom:5px">2. 最終答案：</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:17px;font-weight:900">
+            <input type="number" class="num ch-val-in" data-cidx="${idx}" value="${st.val}" placeholder="?">
+            <span>${cqItem.unit}</span>
+          </div>
+        </div>
+      </div>
+
+      ${st.feedbackHtml ? st.feedbackHtml : ''}
+    </div>`;
+  }).join('');
+
+  // 綁定漸進提示按鈕
+  $$('.ch-tip-btn').forEach(b=>{
+    b.onclick=()=>{
+      const idx = +b.dataset.cidx;
+      const st = S.chAns[idx];
+      st.hintLevel = st.hintLevel < 3 ? st.hintLevel + 1 : 1;
+      if(st.hintLevel >= 2 && st.simStage === 0) st.simStage = 1;
+      renderChallengeList();
+    };
+  });
+  $$('.ch-next-hint-btn').forEach(b=>{
+    b.onclick=()=>{
+      const idx = +b.dataset.cidx;
+      const st = S.chAns[idx];
+      if(st.hintLevel < 3) st.hintLevel++;
+      if(st.hintLevel >= 2 && st.simStage === 0) st.simStage = 1;
+      renderChallengeList();
+    };
+  });
+  // 綁定九因歌幫手按鈕
+  $$('.ch-times-btn').forEach(b=>{
+    b.onclick=()=>{
+      const idx = +b.dataset.cidx;
+      S.chAns[idx].showTimes = !S.chAns[idx].showTimes;
+      renderChallengeList();
+    };
+  });
+  $$('.ch-tts-btn').forEach(b=>{
+    b.onclick=()=>{
+      const idx = +b.dataset.cidx;
+      speak(CHALLENGE_QS[idx].text);
+    };
+  });
+  // 綁定模擬器分物與學生自選餘數處理動作
+  $$('.ch-sim-step1').forEach(b=>{
+    b.onclick=()=>{
+      const idx = +b.dataset.cidx;
+      S.chAns[idx].simStage = 1;
+      S.chAns[idx].userRemAction = null;
+      renderChallengeList();
+    };
+  });
+  $$('.ch-sim-reset').forEach(b=>{
+    b.onclick=()=>{
+      const idx = +b.dataset.cidx;
+      S.chAns[idx].simStage = 0;
+      S.chAns[idx].userRemAction = null;
+      renderChallengeList();
+    };
+  });
+  $$('.ch-act-btn').forEach(b=>{
+    b.onclick=()=>{
+      const idx = +b.dataset.cidx;
+      S.chAns[idx].userRemAction = b.dataset.act;
+      S.chAns[idx].simStage = 2;
+      renderChallengeList();
+    };
+  });
+  $$('.ch-h-btn').forEach(b=>{
+    b.onclick=()=>{
+      const idx = +b.dataset.cidx;
+      S.chAns[idx].h = b.dataset.h;
+      renderChallengeList();
+    };
+  });
+  $$('.ch-val-in').forEach(inpEl=>{
+    inpEl.oninput=()=>{
+      const idx = +inpEl.dataset.cidx;
+      S.chAns[idx].val = inpEl.value.trim();
+    };
+  });
+}
+
+/* 批改 4 題小挑戰：實裝第 1、2、3、4、5 點引導式診斷（絕不直接給答案） */
+$('#bCheckChallenge').onclick = function(){
+  let correctCnt = 0;
+
+  CHALLENGE_QS.forEach((cqItem, idx)=>{
+    const st = S.chAns[idx];
+    const hPicked = st.h !== '';
+    const vPicked = st.val !== '';
+    const hOk = st.h === cqItem.handling;
+    const vNum = vPicked ? Number(st.val) : NaN;
+    const vOk = vPicked && vNum === cqItem.ans;
+    const rightHLabel = H_OPTS.find(x=>x[0]===cqItem.handling)?.[1] || '';
+
+    if(hOk && vOk){
+      correctCnt++;
+      st.feedbackHtml = `<div class="ch-diag-box ok">
+        ✅ <b>完全正確！</b>你成功找出了「${rightHLabel}」並算出正確答案 <b>${cqItem.ans} ${cqItem.unit}</b>！
+      </div>`;
+    } else {
+      // 答錯時推進漸進式提示層級（第 1 次錯 -> Level 1；第 2 次錯 -> Level 2 + 展開模擬器；第 3 次錯 -> Level 3 半開放算式鷹架）
+      st.attempts = (st.attempts || 0) + 1;
+      st.hintLevel = Math.min(3, Math.max(st.hintLevel + 1, st.attempts));
+      if(st.hintLevel >= 2 && st.simStage === 0){
+        st.simStage = 1;
+      }
+
+      // 第 2 點：檢查是否有針對該錯誤數字的精準情境反問
+      const specificDiag = (!vOk && vPicked) ? cqItem.diagnoseVal(vNum) : null;
+
+      // 第 5 點：若學生的數字連商都未對準，自動打開九因歌幫手
+      if(!vOk && vPicked && !specificDiag){
+        st.showTimes = true;
+      }
+
+      // 第 4 點：分離「答題處理」與「最終答案」的批改回饋
+      let partsMsg = [];
+      if(!hPicked && !vPicked){
+        partsMsg.push(`❗ 你還未選擇「1. 答題處理」及填寫「2. 最終答案」喔！請先看看上方開啟的 <b>🌱 第 ${st.hintLevel} 層提示</b>！`);
+      } else if(hOk && !vOk){
+        partsMsg.push(`👍 <b>1. 答題處理：方向完全正確！</b>你選對了【${rightHLabel}】！`);
+        if(specificDiag){
+          partsMsg.push(specificDiag);
+        } else {
+          partsMsg.push(`🤔 <b>2. 最終答案還差一點點：</b>請先用「📖 九因歌幫手」找出 ${cqItem.total} ÷ ${cqItem.divisor} 的商和餘數，再按【${rightHLabel}】計算！（已為你展開上方提示與模擬器）`);
+        }
+      } else if(!hOk && vOk){
+        partsMsg.push(`👍 <b>2. 最終答案數字（${cqItem.ans} ${cqItem.unit}）算對了！</b>`);
+        partsMsg.push(`🤔 <b>但「1. 答題處理」勾選錯了：</b>想想看，你是怎樣得出 ${cqItem.ans} 這個答案的？是只取商、商加 1、商加餘數，還是除數減餘數？`);
+      } else {
+        partsMsg.push(`🤔 <b>1. 答題處理需再想想：</b>請讀讀題目黃色螢光筆圈出的關鍵字，想想餘下的 ${cqItem.itemName}要怎樣處理？`);
+        if(specificDiag){
+          partsMsg.push(specificDiag);
+        } else {
+          partsMsg.push(`💡 已為你開啟上方 <b>🪜 第 ${st.hintLevel} 層提示</b>，請在「🧪 互動分物模擬器」點擊處理餘數按鈕親自數一數！`);
+        }
+      }
+
+      st.feedbackHtml = `<div class="ch-diag-box ${hOk || vOk ? 'partial' : 'err'}">
+        ${partsMsg.join('<br>')}
+      </div>`;
+    }
+  });
+
+  renderChallengeList();
+
+  // 更新卡片邊框顏色（全對綠色、半對橙黃色）
+  CHALLENGE_QS.forEach((cqItem, idx)=>{
+    const st = S.chAns[idx];
+    const hOk = st.h === cqItem.handling;
+    const vOk = st.val !== '' && Number(st.val) === cqItem.ans;
+    const card = $(`#chCard_${idx}`);
+    card.classList.remove('done-card', 'partial-card');
+    if(hOk && vOk) card.classList.add('done-card');
+    else if(hOk || vOk) card.classList.add('partial-card');
+  });
+
+  if(correctCnt === CHALLENGE_QS.length){
+    S.chPassed = true;
+    $('#challengeFeedback').className = 'fb good';
+    $('#challengeFeedback').innerHTML = `🎉 恭喜你！4 題小挑戰全部靠自己思考答對，成功換領《品德好學生表揚卡》！`;
+    renderTabs(true);
+    submitAndShowAwardCard(true);
+  } else {
+    $('#challengeFeedback').className = 'fb bad';
+    $('#challengeFeedback').innerHTML = `目前已答對 <b>${correctCnt} / 4</b> 題！系統已為未答對的題目開啟「🪜 漸進式思考引導」與「🧪 互動模擬器」，請根據提問自己推導出正確答案吧！`;
+  }
+};
+
+function submitAndShowAwardCard(fromChallenge=false){
+  const doneCount = S.res.filter(r=>r).length;
+  const totalScore = S.res.reduce((t,r)=>t+(r?r.score:0),0);
+  const pass = totalScore >= CFG.PASS || fromChallenge;
+
+  const errors = S.res.map((r,i)=>!r?`題${i+1}(未完成)`:r.errs.length?`題${i+1}(錯${r.errs.join('/')})`:'').filter(Boolean).join('、') || '全對';
+  const now = new Date();
+  const timeStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+  const recObj = {
+    timestampMs: Date.now(),
+    timeStr,
+    className: S.cls || '3A',
+    seatNum: S.no || 1,
+    expDone: `${doneCount}/5${S.chPassed?'+挑戰全對':''}`,
+    score: S.chPassed ? Math.max(totalScore, 100) : totalScore,
+    passed: pass,
+    weakPoints: errors
+  };
+
+  if(typeof window.saveRecordCloud === 'function'){
+    window.saveRecordCloud(recObj);
+  }
+
+  openModal(`<div style="text-align:center">
+    <h2 style="margin:4px 0;color:var(--main-dark)">🏆 香海正覺蓮社佛教正慧小學｜品德好學生表揚卡</h2>
+    <p style="font-size:15px;font-weight:900;color:#15803d;margin:4px 0 10px">
+      恭喜 ${recObj.className} 班 ${recObj.seatNum} 號同學完成除法課業與小挑戰！（成績已自動同步至雲端試算表）
+    </p>
+
+    <div class="cert-wrapper" id="certCardBox">
+      <img src="1.png" alt="品德好學生表揚卡" onerror="this.style.display='none';document.getElementById('svgFallbackCert').style.display='block'">
+      <div class="cert-class-overlay">${recObj.className}</div>
+      <div class="cert-seat-overlay">${recObj.seatNum} 號</div>
+
+      <div id="svgFallbackCert" style="display:none;padding:22px 20px;text-align:left;background:#fffdf7;border:4px solid #1e293b">
+        <div style="text-align:center;border-bottom:2px solid #1e293b;padding-bottom:10px;margin-bottom:14px">
+          <div style="font-size:22px;font-weight:900;color:#1e293b;letter-spacing:1px">香海正覺蓮社佛教正慧小學</div>
+          <div style="font-size:11px;font-weight:800;color:#475569">HHCKLA BUDDHIST WISDOM PRIMARY SCHOOL</div>
+          <div style="display:inline-block;margin-top:8px;background:#facc15;border:2px solid #1e293b;padding:4px 18px;border-radius:8px;font-size:24px;font-weight:900;color:#1e293b">
+            品德好學生表揚卡
+          </div>
+        </div>
+        <div style="font-size:19px;font-weight:900;margin:14px 0;color:#1e293b">
+          <span style="display:inline-block;min-width:70px;border-bottom:3px solid #1e293b;text-align:center;color:#1e3a8a">${recObj.className}</span> 班
+          <span style="display:inline-block;min-width:130px;border-bottom:3px solid #1e293b;text-align:center;color:#1e3a8a">${recObj.seatNum} 號</span> 同學：
+        </div>
+        <p style="font-size:16px;font-weight:800;margin:8px 0 14px">現表揚你以下的良好行為，請繼續努力。</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#fef9c3;border:2px solid #eab308;border-radius:10px;padding:10px 14px;margin-bottom:12px">
+          <strong style="font-size:18px;color:#854d0e">正慧精神：</strong>
+          <span style="font-weight:900;color:#1d4ed8">禮儀 ｜ 責任 ｜ 感恩 ｜ 堅毅 ✓ ｜ 誠信 ｜ 仁愛 ｜ 尊重</span>
+        </div>
+        <div style="background:#fff7ed;border:2px dashed #f97316;border-radius:10px;padding:12px;font-size:15px;font-weight:800;line-height:1.8">
+          <div>♥ 不輕言放棄　　　♥ 勇於嘗試</div>
+          <div>♥ 具備追求卓越的精神　♥ 不畏艱辛（成功完成數學科除法課業與小挑戰）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctrl" style="margin-top:14px">
+      <button class="btn warm" id="bDownloadCert">📥 下載我的表揚卡 (.png)</button>
+      <button class="btn" onclick="closeModal()">完成並關閉</button>
+    </div>
+  </div>`);
+
+  if($('#bDownloadCert')){
+    $('#bDownloadCert').onclick = () => downloadAwardCardPNG(recObj.className, recObj.seatNum);
+  }
+}
+
+function downloadAwardCardPNG(clsName, seatNo){
+  const cvs = document.createElement('canvas');
+  cvs.width = 900;
+  cvs.height = 1120;
+  const c = cvs.getContext('2d');
+
+  const drawTextAndSave = (hasBgImg) => {
+    if(!hasBgImg){
+      c.fillStyle = '#fffdf7';
+      c.fillRect(0, 0, cvs.width, cvs.height);
+      c.strokeStyle = '#1e293b';
+      c.lineWidth = 12;
+      c.strokeRect(24, 24, cvs.width - 48, cvs.height - 48);
+
+      c.fillStyle = '#1e293b';
+      c.font = '900 44px "Noto Sans TC", sans-serif';
+      c.textAlign = 'center';
+      c.fillText('香海正覺蓮社佛教正慧小學', cvs.width / 2, 120);
+
+      c.fillStyle = '#facc15';
+      c.fillRect(210, 160, 480, 74);
+      c.strokeRect(210, 160, 480, 74);
+      c.fillStyle = '#1e293b';
+      c.font = '900 42px "Noto Sans TC", sans-serif';
+      c.fillText('品德好學生表揚卡', cvs.width / 2, 212);
+
+      c.font = '900 34px "Noto Sans TC", sans-serif';
+      c.textAlign = 'left';
+      c.fillText(`${clsName} 班   ${seatNo} 號 同學：`, 110, 335);
+      c.fillText('現表揚你以下的良好行為，請繼續努力。', 110, 405);
+      c.fillStyle = '#1d4ed8';
+      c.fillText('正慧精神：堅毅 ✓（不輕言放棄、勇於嘗試、追求卓越）', 110, 510);
+    } else {
+      c.fillStyle = '#1e3a8a';
+      c.font = '900 42px "Noto Sans TC", sans-serif';
+      c.textAlign = 'center';
+      c.fillText(clsName, cvs.width * 0.17, cvs.height * 0.302);
+      c.fillText(`${seatNo} 號`, cvs.width * 0.435, cvs.height * 0.302);
+    }
+
+    const link = document.createElement('a');
+    link.download = `正慧小學_品德好學生表揚卡_${clsName}班_${seatNo}號.png`;
+    link.href = cvs.toDataURL('image/png');
+    link.click();
+  };
+
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = () => {
+    c.drawImage(img, 0, 0, cvs.width, cvs.height);
+    drawTextAndSave(true);
+  };
+  img.onerror = () => {
+    drawTextAndSave(false);
+  };
+  img.src = '1.png';
+}
+
+window.openModal = function(h){ $('#modalBox').innerHTML=h; $('#modal').classList.remove('hidden'); };
+window.closeModal = function(){ $('#modal').classList.add('hidden'); };
+
+const APPS_SCRIPT_CODE = `function doGet() {
+  var sheet = SpreadsheetApp.openById("${CFG.SHEET_ID}").getSheets()[0];
+  var data = sheet.getDataRange().getValues();
+  return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
+}
+function doPost(e) {
+  var sheet = SpreadsheetApp.openById("${CFG.SHEET_ID}").getSheets()[0];
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(["提交時間", "班別", "學號", "完成題數", "分數", "是否達標", "需加強題目", "Timestamp"]);
+  }
+  var d = JSON.parse(e.postData.contents);
+  sheet.appendRow([d.timeStr, d.className, d.seatNum, d.expDone, d.score, d.passed ? "達標" : "未達標", d.weakPoints, d.timestampMs]);
+  return ContentService.createTextOutput("OK");
+}`;
+
+function teacherLogin(){
+  openModal(`<div style="text-align:center;max-width:400px;margin:0 auto">
+    <h3 style="color:var(--main-dark);margin-top:0">🔒 老師雲端成績庫驗證</h3>
+    <p style="font-weight:700;color:#555;font-size:14px">請輸入老師密碼以開啟三年級除法(3.2)雲端成績表：</p>
+    <input type="password" id="pin" placeholder="請輸入老師密碼" style="width:100%;text-align:center;margin-bottom:8px">
+    <p id="pinErr" style="color:var(--red);font-weight:900;min-height:20px;font-size:14px"></p>
+    <div class="ctrl">
+      <button class="btn" id="bPin">確認開啟</button>
+      <button class="btn gray" onclick="closeModal()">取消</button>
+    </div>
+  </div>`);
+  setTimeout(()=>$('#pin')?.focus(),80);
+  const checkPin = ()=>{
+    const val = ($('#pin')?.value || '').trim();
+    if(CFG.TEACHER_PINS.includes(val)){
+      if(typeof window.refreshGoogleSheet === 'function') window.refreshGoogleSheet();
+      teacherPanel('ALL');
+    } else {
+      $('#pinErr').textContent='密碼不正確，請再試一次。';
+    }
+  };
+  $('#bPin').onclick=checkPin;
+  $('#pin').onkeydown=e=>{ if(e.key==='Enter') checkPin(); };
+}
+
+function teacherPanel(filter){
+  const all = typeof window.cloudRecords === 'function' ? window.cloudRecords() : [];
+  const rows = filter==='ALL' ? all : all.filter(r=>r.className===filter);
+  const keys = ['答題處理','橫式','處理餘數算式','直式','答句','未完成'];
+  const avg = rows.length ? Math.round(rows.reduce((t,r)=>t+(Number(r.score)||0),0)/rows.length) : 0;
+  const passCnt = rows.filter(r=>r.score>=70).length;
+
+  openModal(`
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:2px solid #e2e8f0;padding-bottom:10px">
+    <div>
+      <h3 style="margin:0;color:var(--main-dark)">📊 三年級數學科課業：除法(3.2) — 老師雲端成績庫</h3>
+      <small style="color:#64748b;font-weight:700">試算表 ID：${CFG.SHEET_ID}</small>
+    </div>
+    <div class="ctrl" style="margin:0">
+      <a href="https://docs.google.com/spreadsheets/d/${CFG.SHEET_ID}/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn warm" style="text-decoration:none;display:inline-flex;align-items:center">📗 打開 Google 試算表</a>
+      <button class="btn" id="bCsv">📥 匯出 Excel (.csv)</button>
+      <button class="btn gray" onclick="closeModal()">關閉</button>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 0">
+    <div>
+      <b>篩選班別：</b>
+      <select id="fCls">${['ALL','3A','3B','3C','3D','3E'].map(c=>`<option value="${c}" ${c===filter?'selected':''}>${c==='ALL'?'全部班別 (3A - 3E)':c+' 班'}</option>`).join('')}</select>
+    </div>
+    <div style="font-weight:900;color:var(--main-dark)">共 ${rows.length} 筆記錄 ｜ 達標人數：${passCnt} 人 ｜ 平均分：${avg} 分</div>
+  </div>
+
+  <div style="background:#f8fafc;border:1.5px solid #cbd5e1;border-radius:10px;padding:10px 14px;margin-bottom:12px">
+    <h4 style="margin:0 0 6px;color:var(--main-dark)">課堂難點統計（錯誤細項分佈）</h4>
+    ${keys.map(k=>{
+      const v=rows.filter(r=>String(r.weakPoints||'').includes(k)).length;
+      return `<div style="display:flex;align-items:center;gap:8px;margin:4px 0;font-size:13px;font-weight:700">
+        <span style="width:115px">${k}</span>
+        <div style="height:12px;background:var(--main);border-radius:4px;width:${rows.length?Math.max(4,v/rows.length*240):0}px"></div>
+        <span>${v} 人次</span>
+      </div>`;
+    }).join('')}
+  </div>
+
+  <div style="max-height:280px;overflow-y:auto">
+    <table class="rec">
+      <tr><th>提交時間</th><th>班別</th><th>學號</th><th>完成進度</th><th>總分</th><th>達標</th><th>需加強題目</th></tr>
+      ${rows.map(r=>`<tr>
+        <td>${r.timeStr||'-'}</td>
+        <td><b>${r.className}</b></td>
+        <td><b>${r.seatNum} 號</b></td>
+        <td>${r.expDone||'5/5'}</td>
+        <td style="font-weight:900;color:${r.score>=70?'#15803d':'#b91c1c'}">${r.score} 分</td>
+        <td>${r.score>=70?'✅ 達標':'未達標'}</td>
+        <td style="text-align:left">${r.weakPoints||'全對'}</td>
+      </tr>`).join('')||'<tr><td colspan="7" style="padding:18px;color:#64748b">此班別暫時沒有記錄</td></tr>'}
+    </table>
+  </div>
+
+  <details style="margin-top:12px;background:#f8fafc;padding:10px 14px;border-radius:10px;border:1px solid #cbd5e1">
+    <summary style="cursor:pointer;font-weight:900;color:var(--main-dark)">⚙️ Google Sheet 自動寫入設定（Apps Script）</summary>
+    <p style="font-size:13px;margin:8px 0">Apps Script 網頁應用程式網址：<input type="text" id="urlIn" style="width:100%;margin-top:4px" value="${localStorage.getItem(CFG.STORAGE_GAS_KEY)||''}" placeholder="貼上 https://script.google.com/macros/s/.../exec"></p>
+    <div class="ctrl" style="justify-content:flex-start;margin-top:6px">
+      <button class="btn" id="bSaveUrl">儲存網址</button>
+      <button class="btn gray" id="bCopy">複製 Apps Script 程式碼</button>
+      <span id="saveUrlMsg" style="font-weight:900;color:#15803d"></span>
+    </div>
+    <pre>${APPS_SCRIPT_CODE.replace(/</g,'&lt;')}</pre>
+  </details>`);
+
+  $('#fCls').onchange=e=>teacherPanel(e.target.value);
+  $('#bCsv').onclick=()=>{
+    const csv='\ufeff提交時間,班別,學號,完成題數,總分,達標,需加強題目\n'+rows.map(r=>
+      [r.timeStr,r.className,r.seatNum,r.expDone,r.score,r.score>=70?'達標':'未達標',r.weakPoints].map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',')
+    ).join('\n');
+    const l=document.createElement('a');
+    l.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+    l.download='三年級數學科_除法3.2_雲端成績表.csv'; l.click();
+  };
+  $('#bSaveUrl').onclick=()=>{
+    localStorage.setItem(CFG.STORAGE_GAS_KEY,$('#urlIn').value.trim());
+    if(typeof window.refreshGoogleSheet === 'function') window.refreshGoogleSheet();
+    $('#saveUrlMsg').textContent='已儲存並同步';
+  };
+  $('#bCopy').onclick=()=>{
+    const ta=document.createElement('textarea');
+    ta.value=APPS_SCRIPT_CODE; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    $('#saveUrlMsg').textContent='已複製程式碼';
+  };
+}
+</script>
+</body>
+</html>
